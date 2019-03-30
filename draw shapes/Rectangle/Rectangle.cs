@@ -16,7 +16,7 @@ namespace draw_shapes
                 int tmpCoord = X1;
                 X1 = X2;
                 X2 = tmpCoord;                
-            }
+            } 
             if (Y1 > Y2)
             {
                 int tmpCoord = Y1;

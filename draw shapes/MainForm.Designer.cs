@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlDrawingArea = new System.Windows.Forms.Panel();
             this.btnLine = new System.Windows.Forms.Button();
             this.btnRectangle = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
@@ -36,20 +35,9 @@
             this.btnEllipse = new System.Windows.Forms.Button();
             this.btnCircle = new System.Windows.Forms.Button();
             this.btnTriangle = new System.Windows.Forms.Button();
+            this.pnlDrawingArea = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pnlDrawingArea
-            // 
-            this.pnlDrawingArea.AutoSize = true;
-            this.pnlDrawingArea.BackColor = System.Drawing.Color.White;
-            this.pnlDrawingArea.Location = new System.Drawing.Point(12, 12);
-            this.pnlDrawingArea.Name = "pnlDrawingArea";
-            this.pnlDrawingArea.Size = new System.Drawing.Size(1024, 720);
-            this.pnlDrawingArea.TabIndex = 0;
-            this.pnlDrawingArea.TabStop = true;
-            this.pnlDrawingArea.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlDrawingArea_Paint);
-            this.pnlDrawingArea.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlDrawingArea_MouseDown);
-            this.pnlDrawingArea.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlDrawingArea_MouseUp);
             // 
             // btnLine
             // 
@@ -90,7 +78,6 @@
             this.btnSquare.Text = "Square";
             this.btnSquare.UseVisualStyleBackColor = true;
             this.btnSquare.Click += new System.EventHandler(this.Button1_Click);
-            this.btnSquare.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Button1_MouseMove);
             // 
             // btnEllipse
             // 
@@ -122,12 +109,26 @@
             this.btnTriangle.UseVisualStyleBackColor = true;
             this.btnTriangle.Click += new System.EventHandler(this.BtnTriangle_Click);
             // 
+            // pnlDrawingArea
+            // 
+            this.pnlDrawingArea.BackColor = System.Drawing.Color.White;
+            this.pnlDrawingArea.Location = new System.Drawing.Point(12, 12);
+            this.pnlDrawingArea.Name = "pnlDrawingArea";
+            this.pnlDrawingArea.Size = new System.Drawing.Size(1024, 710);
+            this.pnlDrawingArea.TabIndex = 8;
+            this.pnlDrawingArea.TabStop = false;
+            this.pnlDrawingArea.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlDrawingArea_Paint);
+            this.pnlDrawingArea.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlDrawingArea_MouseDown);
+            this.pnlDrawingArea.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlDrawingArea_MouseMove);
+            this.pnlDrawingArea.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlDrawingArea_MouseUp);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1191, 753);
+            this.Controls.Add(this.pnlDrawingArea);
             this.Controls.Add(this.btnTriangle);
             this.Controls.Add(this.btnCircle);
             this.Controls.Add(this.btnEllipse);
@@ -135,20 +136,17 @@
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnRectangle);
             this.Controls.Add(this.btnLine);
-            this.Controls.Add(this.pnlDrawingArea);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shapes";
+            ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnlDrawingArea;
         private System.Windows.Forms.Button btnLine;
         private System.Windows.Forms.Button btnRectangle;
         private System.Windows.Forms.Button btnClear;
@@ -156,6 +154,7 @@
         private System.Windows.Forms.Button btnEllipse;
         private System.Windows.Forms.Button btnCircle;
         private System.Windows.Forms.Button btnTriangle;
+        private System.Windows.Forms.PictureBox pnlDrawingArea;
     }
 }
 

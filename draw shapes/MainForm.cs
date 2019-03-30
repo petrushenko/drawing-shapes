@@ -1,38 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace draw_shapes
 {
     public partial class FrmMain : Form
     {
-        private bool MousePressed {get;set;}
+        private Shape TmpShape { get; set; }
 
-        private List<Shape> Shapes = new List<Shape>();
+        private readonly List<Shape> Shapes = new List<Shape>();
 
-        private Point Point1 { get; set; }
-
-        private Point Point2 { get; set; }
+        private Point FirstPoint { get; set; }
 
         private ShapeCreator CurrentShapeCreator { get; set; }
+
+        private Bitmap BufferedPicture { get; set; }
 
         public FrmMain()
         {
             InitializeComponent();
+            BufferedPicture = new Bitmap(pnlDrawingArea.Width, pnlDrawingArea.Height);
+        }
+
+        private void DoDrawing()
+        {
+            Graphics drawingArea = Graphics.FromImage(BufferedPicture);
+            foreach (Shape shape in Shapes)
+            {
+                shape.Draw(drawingArea);
+            }
+            pnlDrawingArea.Image = BufferedPicture;
+            drawingArea.Dispose();
         }
 
         private void PnlDrawingArea_MouseDown(object sender, MouseEventArgs e)
         {
             if (CurrentShapeCreator != null)
             {
-                Point1 = new Point(e.X, e.Y);
-                MousePressed = true;
+                FirstPoint = new Point(e.X, e.Y);
+                TmpShape = CurrentShapeCreator.GetInstance();
             }
         }
 
@@ -40,14 +47,13 @@ namespace draw_shapes
         {
             if (CurrentShapeCreator != null)
             {
-                Point2 = new Point(e.X, e.Y);
-                Shape CurrShape = CurrentShapeCreator.GetInstance();
-                CurrShape.Point1 = Point1;
-                CurrShape.Point2 = Point2;
-                Shapes.Add(CurrShape);
-                pnlDrawingArea.Invalidate();
+                Shape currShape = CurrentShapeCreator.GetInstance();
+                currShape.Point1 = FirstPoint;
+                currShape.Point2 = new Point(e.X, e.Y);
+                Shapes.Add(currShape);
+                TmpShape = null;
+                DoDrawing();
             }
-
         }
 
         private void BtnLine_Click(object sender, EventArgs e)
@@ -61,7 +67,7 @@ namespace draw_shapes
         }
 
         private void PnlDrawingArea_Paint(object sender, PaintEventArgs e)
-        {
+        { 
             Graphics drawingArea = pnlDrawingArea.CreateGraphics();
             foreach (Shape shape in Shapes)
             {
@@ -70,28 +76,24 @@ namespace draw_shapes
             drawingArea.Dispose();
         }
 
-        private void Clear()
+        private void ClearScreen()
         {
-            Shapes.Clear();
-            pnlDrawingArea.Invalidate();
+            Graphics drawingArea = Graphics.FromImage(BufferedPicture);
+            drawingArea.Clear(Color.White);
+            pnlDrawingArea.Image = BufferedPicture;
+            drawingArea.Dispose();
+            DoDrawing();
         }
 
         private void BtnClear_Click(object sender, EventArgs e)
         {
-            Clear();
+            Shapes.Clear();
+            ClearScreen();
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
             CurrentShapeCreator = new SquareCreator();
-        }
-
-        private void Button1_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (MousePressed)
-            {
-
-            }
         }
 
         private void BtnCircle_Click(object sender, EventArgs e)
@@ -107,6 +109,19 @@ namespace draw_shapes
         private void BtnTriangle_Click(object sender, EventArgs e)
         {
             CurrentShapeCreator = new TriangleCreator();
+        }
+
+        private void PnlDrawingArea_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && CurrentShapeCreator != null)
+            {
+                ClearScreen();
+                TmpShape.Point1 = FirstPoint;
+                TmpShape.Point2 = new Point(e.X, e.Y);
+                Shapes.Add(TmpShape);
+                DoDrawing();
+                Shapes.Remove(TmpShape);
+            }
         }
     }
 }
