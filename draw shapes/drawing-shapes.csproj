@@ -49,6 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Circle\Circle.cs" />
+    <Compile Include="Circle\CircleCreator.cs" />
+    <Compile Include="Ellipse\EllipseCreator.cs" />
+    <Compile Include="Ellipse\Ellipse.cs" />
     <Compile Include="Line\LineCreator.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -65,6 +69,8 @@
     <Compile Include="Shape\ShapeCreator.cs" />
     <Compile Include="Square\Square.cs" />
     <Compile Include="Square\SquareCreator.cs" />
+    <Compile Include="Triangle\Triangle.cs" />
+    <Compile Include="Triangle\TriangleCreator.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

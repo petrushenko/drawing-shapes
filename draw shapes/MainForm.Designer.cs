@@ -32,7 +32,10 @@
             this.btnLine = new System.Windows.Forms.Button();
             this.btnRectangle = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSquare = new System.Windows.Forms.Button();
+            this.btnEllipse = new System.Windows.Forms.Button();
+            this.btnCircle = new System.Windows.Forms.Button();
+            this.btnTriangle = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlDrawingArea
@@ -70,24 +73,54 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(1042, 688);
+            this.btnClear.Location = new System.Drawing.Point(1042, 653);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(139, 44);
+            this.btnClear.Size = new System.Drawing.Size(139, 79);
             this.btnClear.TabIndex = 3;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
-            // button1
+            // btnSquare
             // 
-            this.button1.Location = new System.Drawing.Point(1040, 112);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 44);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Square";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
-            this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Button1_MouseMove);
+            this.btnSquare.Location = new System.Drawing.Point(1042, 112);
+            this.btnSquare.Name = "btnSquare";
+            this.btnSquare.Size = new System.Drawing.Size(139, 44);
+            this.btnSquare.TabIndex = 4;
+            this.btnSquare.Text = "Square";
+            this.btnSquare.UseVisualStyleBackColor = true;
+            this.btnSquare.Click += new System.EventHandler(this.Button1_Click);
+            this.btnSquare.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Button1_MouseMove);
+            // 
+            // btnEllipse
+            // 
+            this.btnEllipse.Location = new System.Drawing.Point(1042, 162);
+            this.btnEllipse.Name = "btnEllipse";
+            this.btnEllipse.Size = new System.Drawing.Size(139, 44);
+            this.btnEllipse.TabIndex = 5;
+            this.btnEllipse.Text = "Ellipse";
+            this.btnEllipse.UseVisualStyleBackColor = true;
+            this.btnEllipse.Click += new System.EventHandler(this.BtnEllipse_Click);
+            // 
+            // btnCircle
+            // 
+            this.btnCircle.Location = new System.Drawing.Point(1042, 212);
+            this.btnCircle.Name = "btnCircle";
+            this.btnCircle.Size = new System.Drawing.Size(139, 44);
+            this.btnCircle.TabIndex = 6;
+            this.btnCircle.Text = "Circle";
+            this.btnCircle.UseVisualStyleBackColor = true;
+            this.btnCircle.Click += new System.EventHandler(this.BtnCircle_Click);
+            // 
+            // btnTriangle
+            // 
+            this.btnTriangle.Location = new System.Drawing.Point(1042, 262);
+            this.btnTriangle.Name = "btnTriangle";
+            this.btnTriangle.Size = new System.Drawing.Size(139, 44);
+            this.btnTriangle.TabIndex = 7;
+            this.btnTriangle.Text = "Triangle";
+            this.btnTriangle.UseVisualStyleBackColor = true;
+            this.btnTriangle.Click += new System.EventHandler(this.BtnTriangle_Click);
             // 
             // FrmMain
             // 
@@ -95,7 +128,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1191, 753);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnTriangle);
+            this.Controls.Add(this.btnCircle);
+            this.Controls.Add(this.btnEllipse);
+            this.Controls.Add(this.btnSquare);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnRectangle);
             this.Controls.Add(this.btnLine);
@@ -116,7 +152,10 @@
         private System.Windows.Forms.Button btnLine;
         private System.Windows.Forms.Button btnRectangle;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSquare;
+        private System.Windows.Forms.Button btnEllipse;
+        private System.Windows.Forms.Button btnCircle;
+        private System.Windows.Forms.Button btnTriangle;
     }
 }
 

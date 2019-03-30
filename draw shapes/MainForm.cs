@@ -93,5 +93,20 @@ namespace draw_shapes
 
             }
         }
+
+        private void BtnCircle_Click(object sender, EventArgs e)
+        {
+            CurrentShapeCreator = new CircleCreator();
+        }
+
+        private void BtnEllipse_Click(object sender, EventArgs e)
+        {
+            CurrentShapeCreator = new EllipseCreator();
+        }
+
+        private void BtnTriangle_Click(object sender, EventArgs e)
+        {
+            CurrentShapeCreator = new TriangleCreator();
+        }
     }
 }
