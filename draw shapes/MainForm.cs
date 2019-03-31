@@ -67,16 +67,6 @@ namespace draw_shapes
             CurrentShapeCreator = new RectangleCreator();
         }
 
-        private void PnlDrawingArea_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics drawingArea = pnlDrawingArea.CreateGraphics();
-            foreach (Shape shape in Shapes)
-            {
-                shape.Draw(drawingArea);
-            }
-            drawingArea.Dispose();
-        }
-
         private void ClearScreen()
         {
             Graphics drawingArea = Graphics.FromImage(BufferedPicture);
@@ -140,15 +130,6 @@ namespace draw_shapes
             {
                 TmpShape = Shapes[Shapes.Count - 1];
                 Shapes.Remove(TmpShape);
-                DoDrawing();
-            }
-        }
-
-        private void BtnRedo_Click(object sender, EventArgs e)
-        {
-            if (TmpShape != null)
-            {
-                Shapes.Add(TmpShape);
                 TmpShape = null;
                 DoDrawing();
             }

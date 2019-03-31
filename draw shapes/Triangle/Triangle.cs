@@ -3,10 +3,10 @@ using System.Runtime.Serialization;
 
 namespace draw_shapes
 {
-    [DataContract(Name ="Triangle")]
+    [DataContract]
     class Triangle : Line
     {
-        [DataMember(Name = "Points")]
+        [DataMember]
         public Point[] Points = new Point[3];
 
         private void DistributeCoords()

@@ -39,7 +39,6 @@
             this.btnSirialize = new System.Windows.Forms.Button();
             this.btnDesirialized = new System.Windows.Forms.Button();
             this.btnUndo = new System.Windows.Forms.Button();
-            this.btnRedo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +64,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(1042, 630);
+            this.btnClear.Location = new System.Drawing.Point(1042, 634);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(139, 43);
             this.btnClear.TabIndex = 3;
@@ -118,17 +117,16 @@
             this.pnlDrawingArea.BackColor = System.Drawing.Color.White;
             this.pnlDrawingArea.Location = new System.Drawing.Point(12, 12);
             this.pnlDrawingArea.Name = "pnlDrawingArea";
-            this.pnlDrawingArea.Size = new System.Drawing.Size(1024, 661);
+            this.pnlDrawingArea.Size = new System.Drawing.Size(1024, 665);
             this.pnlDrawingArea.TabIndex = 8;
             this.pnlDrawingArea.TabStop = false;
-            this.pnlDrawingArea.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlDrawingArea_Paint);
             this.pnlDrawingArea.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlDrawingArea_MouseDown);
             this.pnlDrawingArea.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlDrawingArea_MouseMove);
             this.pnlDrawingArea.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlDrawingArea_MouseUp);
             // 
             // btnSirialize
             // 
-            this.btnSirialize.Location = new System.Drawing.Point(1042, 530);
+            this.btnSirialize.Location = new System.Drawing.Point(1042, 462);
             this.btnSirialize.Name = "btnSirialize";
             this.btnSirialize.Size = new System.Drawing.Size(139, 44);
             this.btnSirialize.TabIndex = 9;
@@ -138,7 +136,7 @@
             // 
             // btnDesirialized
             // 
-            this.btnDesirialized.Location = new System.Drawing.Point(1042, 580);
+            this.btnDesirialized.Location = new System.Drawing.Point(1042, 512);
             this.btnDesirialized.Name = "btnDesirialized";
             this.btnDesirialized.Size = new System.Drawing.Size(139, 44);
             this.btnDesirialized.TabIndex = 10;
@@ -148,31 +146,20 @@
             // 
             // btnUndo
             // 
-            this.btnUndo.Location = new System.Drawing.Point(1042, 480);
+            this.btnUndo.Location = new System.Drawing.Point(1042, 584);
             this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(65, 44);
+            this.btnUndo.Size = new System.Drawing.Size(137, 44);
             this.btnUndo.TabIndex = 11;
-            this.btnUndo.Text = "Undo";
+            this.btnUndo.Text = "Cancel";
             this.btnUndo.UseVisualStyleBackColor = true;
             this.btnUndo.Click += new System.EventHandler(this.BtnUndo_Click);
-            // 
-            // btnRedo
-            // 
-            this.btnRedo.Location = new System.Drawing.Point(1116, 480);
-            this.btnRedo.Name = "btnRedo";
-            this.btnRedo.Size = new System.Drawing.Size(65, 44);
-            this.btnRedo.TabIndex = 12;
-            this.btnRedo.Text = "Redo";
-            this.btnRedo.UseVisualStyleBackColor = true;
-            this.btnRedo.Click += new System.EventHandler(this.BtnRedo_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1191, 681);
-            this.Controls.Add(this.btnRedo);
+            this.ClientSize = new System.Drawing.Size(1191, 688);
             this.Controls.Add(this.btnUndo);
             this.Controls.Add(this.btnDesirialized);
             this.Controls.Add(this.btnSirialize);
@@ -206,7 +193,6 @@
         private System.Windows.Forms.Button btnSirialize;
         private System.Windows.Forms.Button btnDesirialized;
         private System.Windows.Forms.Button btnUndo;
-        private System.Windows.Forms.Button btnRedo;
     }
 }
 

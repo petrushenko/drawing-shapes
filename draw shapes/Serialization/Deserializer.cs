@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using System.Text;
 using System.Windows.Forms;
 
 namespace draw_shapes
@@ -25,7 +26,7 @@ namespace draw_shapes
                 {
                     list = jsonFormatter.ReadObject(fs) as List<Shape>;
                 }
-                catch(Exception e)
+                catch
                 {
                     MessageBox.Show(ErrorMsg, ErrorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
