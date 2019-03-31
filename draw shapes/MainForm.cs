@@ -9,7 +9,7 @@ namespace draw_shapes
     {
         private Shape TmpShape { get; set; }
 
-        private readonly List<Shape> Shapes = new List<Shape>();
+        private List<Shape> Shapes = new List<Shape>();
 
         private Point FirstPoint { get; set; }
 
@@ -25,6 +25,7 @@ namespace draw_shapes
 
         private void DoDrawing()
         {
+            ClearScreen();
             Graphics drawingArea = Graphics.FromImage(BufferedPicture);
             foreach (Shape shape in Shapes)
             {
@@ -67,7 +68,7 @@ namespace draw_shapes
         }
 
         private void PnlDrawingArea_Paint(object sender, PaintEventArgs e)
-        { 
+        {
             Graphics drawingArea = pnlDrawingArea.CreateGraphics();
             foreach (Shape shape in Shapes)
             {
@@ -82,13 +83,12 @@ namespace draw_shapes
             drawingArea.Clear(Color.White);
             pnlDrawingArea.Image = BufferedPicture;
             drawingArea.Dispose();
-            DoDrawing();
         }
 
         private void BtnClear_Click(object sender, EventArgs e)
         {
             Shapes.Clear();
-            ClearScreen();
+            DoDrawing();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -115,12 +115,42 @@ namespace draw_shapes
         {
             if (e.Button == MouseButtons.Left && CurrentShapeCreator != null)
             {
-                ClearScreen();
                 TmpShape.Point1 = FirstPoint;
                 TmpShape.Point2 = new Point(e.X, e.Y);
                 Shapes.Add(TmpShape);
                 DoDrawing();
                 Shapes.Remove(TmpShape);
+            }
+        }
+
+        private void BtnSerealize_Click(object sender, EventArgs e)
+        {
+            Serializer.DoSerialization(typeof(List<Shape>), Shapes);
+        }
+
+        private void BtnDesirialized_Click(object sender, EventArgs e)
+        {
+            Deserializer.DoDeserialization(typeof(List<Shape>), ref Shapes);
+            DoDrawing();
+        }
+
+        private void BtnUndo_Click(object sender, EventArgs e)
+        {
+            if (Shapes.Count > 0)
+            {
+                TmpShape = Shapes[Shapes.Count - 1];
+                Shapes.Remove(TmpShape);
+                DoDrawing();
+            }
+        }
+
+        private void BtnRedo_Click(object sender, EventArgs e)
+        {
+            if (TmpShape != null)
+            {
+                Shapes.Add(TmpShape);
+                TmpShape = null;
+                DoDrawing();
             }
         }
     }

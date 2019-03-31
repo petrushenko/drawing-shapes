@@ -1,9 +1,12 @@
 ﻿using System.Drawing;
+using System.Runtime.Serialization;
 
 namespace draw_shapes
 {
+    [DataContract(Name ="Triangle")]
     class Triangle : Line
     {
+        [DataMember(Name = "Points")]
         public Point[] Points = new Point[3];
 
         private void DistributeCoords()

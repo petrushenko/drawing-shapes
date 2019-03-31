@@ -1,12 +1,21 @@
 ﻿using System;
 using System.Drawing;
+using System.Runtime.Serialization;
 
 namespace draw_shapes
 {
+    [DataContract]
     class Rectangle : Shape
     {
-        public int Width { get { return Math.Abs(Point2.X - Point1.X); } }
-        public int Height { get { return Math.Abs(Point2.Y - Point1.Y); } }
+        public int GetWidth()
+        {
+            return Math.Abs(Point2.X - Point1.X);
+        }
+
+        public int GetHeight()
+        {
+            return Math.Abs(Point2.Y - Point1.Y);
+        }
 
         public void CoordsSwap()
         {
@@ -33,7 +42,7 @@ namespace draw_shapes
         {
             CoordsSwap();
             Pen pen = new Pen(Color.Black, 3);
-            graph.DrawRectangle(pen, this.Point1.X, this.Point1.Y, Width, Height);
+            graph.DrawRectangle(pen, this.Point1.X, this.Point1.Y, GetWidth(), GetHeight());
             pen.Dispose();
         }
     }
