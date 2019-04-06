@@ -9,9 +9,10 @@ namespace draw_shapes
     {
         public override void Draw(Graphics graph)
         {
-            Pen pen = new Pen(Color.Black, 3);
-            graph.DrawLine(pen, this.Point1, this.Point2);
-            pen.Dispose();
+            using (Pen pen = new Pen(Color.Black, 3))
+            {
+                graph.DrawLine(pen, Point1, Point2);
+            }
         }
     }
 }

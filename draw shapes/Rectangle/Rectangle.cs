@@ -41,9 +41,10 @@ namespace draw_shapes
         public override void Draw(Graphics graph)
         {
             CoordsSwap();
-            Pen pen = new Pen(Color.Black, 3);
-            graph.DrawRectangle(pen, this.Point1.X, this.Point1.Y, GetWidth(), GetHeight());
-            pen.Dispose();
+            using (Pen pen = new Pen(Color.Black, 3))
+            {
+                graph.DrawRectangle(pen, Point1.X, Point1.Y, GetWidth(), GetHeight());
+            }
         }
     }
 }

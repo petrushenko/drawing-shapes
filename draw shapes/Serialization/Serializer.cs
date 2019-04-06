@@ -1,22 +1,22 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Json;
-using System.Text;
 
 namespace draw_shapes
 {
     class Serializer
     {
         private const string PathToJson = "figures.json";
-        //make for all List<object>
-        public static void DoSerialization(Type type, List<Shape> list)
-        {
-            DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(type);
 
-            using (FileStream fs = new FileStream(PathToJson, FileMode.Create))
+        public static void DoSerialization(List<Shape> list)
+        {
+            JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+
+            string output = JsonConvert.SerializeObject(list, jsonSerializerSettings);
+
+            using (StreamWriter sr = new StreamWriter(PathToJson))
             {
-                jsonFormatter.WriteObject(fs, list);
+                sr.Write(output);
             }
         }
     }

@@ -1,34 +1,33 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Json;
-using System.Text;
 using System.Windows.Forms;
 
 namespace draw_shapes
 {
     class Deserializer
     {
-        private const string ErrorMsg = "Can't decode JSON file.\nIt may be damaged.";
+        private const string ErrorMsg = "Can't decode JSON file.\nIt may be damaged.\n";
 
         private const string ErrorCaption = "Error";
 
         private const string PathToJson = "figures.json";
 
-        //make for all List<object>
-        public static void DoDeserialization(Type type, ref List<Shape> list)
+        public static void DoDeserialization(ref List<Shape> list)
         {
-            DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(type);
-
-            using (FileStream fs = new FileStream(PathToJson, FileMode.OpenOrCreate))
+            using (StreamReader sr = new StreamReader(PathToJson))
             {
+                JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+                string data = sr.ReadToEnd();
                 try
                 {
-                    list = jsonFormatter.ReadObject(fs) as List<Shape>;
+                    list = JsonConvert.DeserializeObject(data, jsonSerializerSettings) as List<Shape>;
                 }
-                catch
+                catch (Exception e)
                 {
-                    MessageBox.Show(ErrorMsg, ErrorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string errorWithText = ErrorMsg + "[" + e.Message + "]";
+                    MessageBox.Show(errorWithText, ErrorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

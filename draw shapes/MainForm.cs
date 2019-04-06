@@ -115,12 +115,14 @@ namespace draw_shapes
 
         private void BtnSerealize_Click(object sender, EventArgs e)
         {
-            Serializer.DoSerialization(typeof(List<Shape>), Shapes);
+            //Serializer.DoSerialization(typeof(List<Shape>), Shapes);
+            Serializer.DoSerialization(Shapes);
         }
 
         private void BtnDesirialized_Click(object sender, EventArgs e)
         {
-            Deserializer.DoDeserialization(typeof(List<Shape>), ref Shapes);
+            //Deserializer.DoDeserialization(typeof(List<Shape>), ref Shapes);
+            Deserializer.DoDeserialization(ref Shapes);
             DoDrawing();
         }
 

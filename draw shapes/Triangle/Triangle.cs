@@ -25,10 +25,12 @@ namespace draw_shapes
 
         public override void Draw(Graphics graph)
         {
-            this.DistributeCoords();
-            Pen pen = new Pen(Color.Black, 3);
-            graph.DrawPolygon(pen, Points);
-            pen.Dispose();
+            DistributeCoords();
+
+            using (Pen pen = new Pen(Color.Black, 3))
+            {
+                graph.DrawPolygon(pen, Points);
+            }
         }
 
     }
