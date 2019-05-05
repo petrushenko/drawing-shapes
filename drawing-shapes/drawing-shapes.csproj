@@ -54,30 +54,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Circle\Circle.cs" />
-    <Compile Include="Circle\CircleCreator.cs" />
-    <Compile Include="Serialization\Deserializer.cs" />
-    <Compile Include="Ellipse\EllipseCreator.cs" />
-    <Compile Include="Ellipse\Ellipse.cs" />
-    <Compile Include="Line\LineCreator.cs" />
+    <Compile Include="Figures\Circle.cs" />
+    <Compile Include="Figures\CircleCreator.cs" />
+    <Compile Include="Serializer\Deserializer.cs" />
+    <Compile Include="Figures\Ellipse.cs" />
+    <Compile Include="Figures\EllipseCreator.cs" />
+    <Compile Include="Figures\Line.cs" />
+    <Compile Include="Figures\LineCreator.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Line\Line.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rectangle\Rectangle.cs" />
-    <Compile Include="Rectangle\RectangleCreator.cs" />
-    <Compile Include="Serialization\Serializer.cs" />
-    <Compile Include="Shape\Shape.cs" />
-    <Compile Include="Shape\ShapeCreator.cs" />
-    <Compile Include="Square\Square.cs" />
-    <Compile Include="Square\SquareCreator.cs" />
-    <Compile Include="Triangle\Triangle.cs" />
-    <Compile Include="Triangle\TriangleCreator.cs" />
+    <Compile Include="Figures\Rectangle.cs" />
+    <Compile Include="Figures\RectangleCreator.cs" />
+    <Compile Include="Serializer\Serializer.cs" />
+    <Compile Include="Figures\Shape.cs" />
+    <Compile Include="Figures\ShapeCreator.cs" />
+    <Compile Include="Figures\Square.cs" />
+    <Compile Include="Figures\SquareCreator.cs" />
+    <Compile Include="Figures\Triangle.cs" />
+    <Compile Include="Figures\TriangleCreator.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +103,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PluginInterface\PluginInterface.csproj">
+      <Project>{146b952c-5c8e-41e2-9db9-ebf05c5707a2}</Project>
+      <Name>PluginInterface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

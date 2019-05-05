@@ -28,39 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnLine = new System.Windows.Forms.Button();
-            this.btnRectangle = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.btnSquare = new System.Windows.Forms.Button();
-            this.btnEllipse = new System.Windows.Forms.Button();
-            this.btnCircle = new System.Windows.Forms.Button();
-            this.btnTriangle = new System.Windows.Forms.Button();
             this.pnlDrawingArea = new System.Windows.Forms.PictureBox();
             this.btnSirialize = new System.Windows.Forms.Button();
             this.btnDesirialized = new System.Windows.Forms.Button();
             this.btnUndo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnLine
-            // 
-            this.btnLine.Location = new System.Drawing.Point(1042, 12);
-            this.btnLine.Name = "btnLine";
-            this.btnLine.Size = new System.Drawing.Size(139, 44);
-            this.btnLine.TabIndex = 1;
-            this.btnLine.Text = "Line";
-            this.btnLine.UseVisualStyleBackColor = true;
-            this.btnLine.Click += new System.EventHandler(this.BtnLine_Click);
-            // 
-            // btnRectangle
-            // 
-            this.btnRectangle.Location = new System.Drawing.Point(1042, 62);
-            this.btnRectangle.Name = "btnRectangle";
-            this.btnRectangle.Size = new System.Drawing.Size(139, 44);
-            this.btnRectangle.TabIndex = 2;
-            this.btnRectangle.Text = "Rectangle";
-            this.btnRectangle.UseVisualStyleBackColor = true;
-            this.btnRectangle.Click += new System.EventHandler(this.BtnRectangle_Click);
             // 
             // btnClear
             // 
@@ -71,46 +45,6 @@
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
-            // 
-            // btnSquare
-            // 
-            this.btnSquare.Location = new System.Drawing.Point(1042, 112);
-            this.btnSquare.Name = "btnSquare";
-            this.btnSquare.Size = new System.Drawing.Size(139, 44);
-            this.btnSquare.TabIndex = 4;
-            this.btnSquare.Text = "Square";
-            this.btnSquare.UseVisualStyleBackColor = true;
-            this.btnSquare.Click += new System.EventHandler(this.Button1_Click);
-            // 
-            // btnEllipse
-            // 
-            this.btnEllipse.Location = new System.Drawing.Point(1042, 162);
-            this.btnEllipse.Name = "btnEllipse";
-            this.btnEllipse.Size = new System.Drawing.Size(139, 44);
-            this.btnEllipse.TabIndex = 5;
-            this.btnEllipse.Text = "Ellipse";
-            this.btnEllipse.UseVisualStyleBackColor = true;
-            this.btnEllipse.Click += new System.EventHandler(this.BtnEllipse_Click);
-            // 
-            // btnCircle
-            // 
-            this.btnCircle.Location = new System.Drawing.Point(1042, 212);
-            this.btnCircle.Name = "btnCircle";
-            this.btnCircle.Size = new System.Drawing.Size(139, 44);
-            this.btnCircle.TabIndex = 6;
-            this.btnCircle.Text = "Circle";
-            this.btnCircle.UseVisualStyleBackColor = true;
-            this.btnCircle.Click += new System.EventHandler(this.BtnCircle_Click);
-            // 
-            // btnTriangle
-            // 
-            this.btnTriangle.Location = new System.Drawing.Point(1042, 262);
-            this.btnTriangle.Name = "btnTriangle";
-            this.btnTriangle.Size = new System.Drawing.Size(139, 44);
-            this.btnTriangle.TabIndex = 7;
-            this.btnTriangle.Text = "Triangle";
-            this.btnTriangle.UseVisualStyleBackColor = true;
-            this.btnTriangle.Click += new System.EventHandler(this.BtnTriangle_Click);
             // 
             // pnlDrawingArea
             // 
@@ -164,13 +98,7 @@
             this.Controls.Add(this.btnDesirialized);
             this.Controls.Add(this.btnSirialize);
             this.Controls.Add(this.pnlDrawingArea);
-            this.Controls.Add(this.btnTriangle);
-            this.Controls.Add(this.btnCircle);
-            this.Controls.Add(this.btnEllipse);
-            this.Controls.Add(this.btnSquare);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnRectangle);
-            this.Controls.Add(this.btnLine);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.Name = "FrmMain";
@@ -182,13 +110,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnLine;
-        private System.Windows.Forms.Button btnRectangle;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button btnSquare;
-        private System.Windows.Forms.Button btnEllipse;
-        private System.Windows.Forms.Button btnCircle;
-        private System.Windows.Forms.Button btnTriangle;
         private System.Windows.Forms.PictureBox pnlDrawingArea;
         private System.Windows.Forms.Button btnSirialize;
         private System.Windows.Forms.Button btnDesirialized;

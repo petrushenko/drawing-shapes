@@ -12,6 +12,11 @@ namespace draw_shapes
         [DataMember]
         public Point Point2 { get; set; }
 
-        public abstract void Draw(Graphics graph);         
+        public abstract void Draw(Graphics graph);
+
+        public void Draw()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
