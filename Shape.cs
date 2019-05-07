@@ -1,16 +1,17 @@
 ﻿using System.Drawing;
-using System.Runtime.Serialization;
+using PluginInterface;
 
 namespace draw_shapes
 {
-    [DataContract]
-    abstract class Shape
+    abstract class Shape : IShapePlugin
     {
-        [DataMember]
         public Point Point1 { get; set; }
 
-        [DataMember]
         public Point Point2 { get; set; }
+
+        public string ButtonName => throw new System.NotImplementedException();
+
+        public IShapeCreatorPlugin ButtonTag => throw new System.NotImplementedException();
 
         public abstract void Draw(Graphics graph);
 

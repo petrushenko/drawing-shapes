@@ -9,17 +9,17 @@ namespace draw_shapes
     {
         private const string PathToJson = "figures.json";
 
-        public static void DoSerialization(List<Shape> list)
-        {
-            JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+        //public static void DoSerialization(List<Shape> list)
+        //{
+        //    JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
 
-            string output = JsonConvert.SerializeObject(list, jsonSerializerSettings);
+        //    string output = JsonConvert.SerializeObject(list, jsonSerializerSettings);
 
-            using (StreamWriter sr = new StreamWriter(PathToJson))
-            {
-                sr.Write(output);
-            }
-        }
+        //    using (StreamWriter sr = new StreamWriter(PathToJson))
+        //    {
+        //        sr.Write(output);
+        //    }
+        //}
 
         public static void DoSerialization(List<IShapePlugin> list)
         {

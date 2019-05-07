@@ -1,4 +1,5 @@
 ﻿using PluginInterface;
+using Plugins;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -18,9 +19,6 @@ namespace draw_shapes
         public IShapeCreatorPlugin ShapeCreator { get; set; }
 
         private IShapePlugin TempShape { get; set; }
-        private Shape TmpShape { get; set; }
-
-        private List<Shape> Shapes = new List<Shape>();
 
         private Point FirstPoint { get; set; }
 
@@ -29,9 +27,20 @@ namespace draw_shapes
         public FrmMain()
         {
             InitializeComponent();
-            BufferedPicture = new Bitmap(pnlDrawingArea.Width, pnlDrawingArea.Height);
+            UpdateBufferPicture();
             ShapePluginsUpload();
+            InitializaStandartFidures();
             ButtonsInitialize();
+        }
+
+        private void UpdateBufferPicture()
+        {
+            BufferedPicture = new Bitmap(pnlDrawingArea.Width, pnlDrawingArea.Height);
+        }
+
+        private void InitializaStandartFidures()
+        {
+            ShapePlugins.Add(new Line());
         }
 
         private void ButtonsInitialize()
@@ -46,6 +55,7 @@ namespace draw_shapes
                     Tag = shapePlugin.ButtonTag,
                     Text = shapePlugin.ButtonName,
                     Location = new Point(X, Y),
+                    Anchor = AnchorStyles.Right,
                 };
                 button.Click += ShapeButton_Click;
                 Y += 25;
@@ -89,10 +99,6 @@ namespace draw_shapes
         {
             ClearScreen();
             Graphics drawingArea = Graphics.FromImage(BufferedPicture);
-            //foreach (Shape shape in Shapes)
-            //{
-            //    shape.Draw(drawingArea);
-            //}
             foreach (IShapePlugin shapePlugin in ShapePlugins)
             {
                 shapePlugin.Draw(drawingArea);
@@ -103,11 +109,6 @@ namespace draw_shapes
 
         private void PnlDrawingArea_MouseDown(object sender, MouseEventArgs e)
         {
-            //if (CurrentShapeCreator != null)
-            //{
-            //    FirstPoint = new Point(e.X, e.Y);
-            //    TmpShape = CurrentShapeCreator.GetInstance();
-            //}
             if (ShapeCreator != null)
             {
                 FirstPoint = new Point(e.X, e.Y);
@@ -117,15 +118,6 @@ namespace draw_shapes
 
         private void PnlDrawingArea_MouseUp(object sender, MouseEventArgs e)
         {
-            //if (CurrentShapeCreator != null)
-            //{
-            //    Shape currShape = CurrentShapeCreator.GetInstance();
-            //    currShape.Point1 = FirstPoint;
-            //    currShape.Point2 = new Point(e.X, e.Y);
-            //    Shapes.Add(currShape);
-            //    TmpShape = null;
-            //    DoDrawing();
-            //}
             if (ShapeCreator != null)
             {
                 IShapePlugin currShape = ShapeCreator.GetShape();
@@ -147,8 +139,6 @@ namespace draw_shapes
 
         private void BtnClear_Click(object sender, EventArgs e)
         {
-            //!!!!!
-            Shapes.Clear();
             ShapePlugins.Clear();
             DoDrawing();
         }
@@ -157,11 +147,6 @@ namespace draw_shapes
         {
             if (e.Button == MouseButtons.Left && ShapeCreator != null)
             {
-                //TmpShape.Point1 = FirstPoint;
-                //TmpShape.Point2 = new Point(e.X, e.Y);
-                //Shapes.Add(TmpShape);
-                //DoDrawing();
-                //Shapes.Remove(TmpShape);
                 TempShape.Point1 = FirstPoint;
                 TempShape.Point2 = new Point(e.X, e.Y);
                 ShapePlugins.Add(TempShape);
@@ -172,28 +157,23 @@ namespace draw_shapes
 
         private void BtnSerealize_Click(object sender, EventArgs e)
         {
-            //Serializer.DoSerialization(typeof(List<Shape>), Shapes);
-            Serializer.DoSerialization(Shapes);
             Serializer.DoSerialization(ShapePlugins);
         }
 
         private void BtnDesirialized_Click(object sender, EventArgs e)
         {
-            //Deserializer.DoDeserialization(typeof(List<Shape>), ref Shapes);
-            Deserializer.DoDeserialization(ref Shapes);
             Deserializer.DoDeserialization(ref ShapePlugins);
             DoDrawing();
         }
 
         private void BtnUndo_Click(object sender, EventArgs e)
         {
-            if (Shapes.Count > 0)
-            {
-                TmpShape = Shapes[Shapes.Count - 1];
-                Shapes.Remove(TmpShape);
-                TmpShape = null;
-                DoDrawing();
-            }
+
+        }
+
+        private void FrmMain_Resize(object sender, EventArgs e)
+        {
+            UpdateBufferPicture();
         }
     }
 }

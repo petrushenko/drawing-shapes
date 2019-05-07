@@ -38,6 +38,7 @@
             // 
             // btnClear
             // 
+            this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnClear.Location = new System.Drawing.Point(1042, 634);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(139, 43);
@@ -48,6 +49,9 @@
             // 
             // pnlDrawingArea
             // 
+            this.pnlDrawingArea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlDrawingArea.BackColor = System.Drawing.Color.White;
             this.pnlDrawingArea.Location = new System.Drawing.Point(12, 12);
             this.pnlDrawingArea.Name = "pnlDrawingArea";
@@ -60,6 +64,7 @@
             // 
             // btnSirialize
             // 
+            this.btnSirialize.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnSirialize.Location = new System.Drawing.Point(1042, 462);
             this.btnSirialize.Name = "btnSirialize";
             this.btnSirialize.Size = new System.Drawing.Size(139, 44);
@@ -70,6 +75,7 @@
             // 
             // btnDesirialized
             // 
+            this.btnDesirialized.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnDesirialized.Location = new System.Drawing.Point(1042, 512);
             this.btnDesirialized.Name = "btnDesirialized";
             this.btnDesirialized.Size = new System.Drawing.Size(139, 44);
@@ -80,6 +86,7 @@
             // 
             // btnUndo
             // 
+            this.btnUndo.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnUndo.Location = new System.Drawing.Point(1042, 584);
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.Size = new System.Drawing.Size(137, 44);
@@ -104,6 +111,8 @@
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shapes";
+            this.ResizeEnd += new System.EventHandler(this.FrmMain_ResizeEnd);
+            this.Resize += new System.EventHandler(this.FrmMain_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).EndInit();
             this.ResumeLayout(false);
 

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace draw_shapes
 {
-    class SquareCreator : ShapeCreator
-    {
-        public override Shape GetInstance()
-        {
-            return new Square();
-        }
-    }
+    //class SquareCreator
+    //{
+    //    public Square GetInstance()
+    //    {
+    //        return new Square();
+    //    }
+    //}
 }

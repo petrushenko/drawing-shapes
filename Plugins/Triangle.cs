@@ -1,13 +1,18 @@
 ﻿using System.Drawing;
-using System.Runtime.Serialization;
+using PluginInterface;
 
-namespace draw_shapes
+namespace Plugins
 {
-    [DataContract]
-    class Triangle : Line
+    public class Triangle : IShapePlugin
     {
-        [DataMember]
         public Point[] Points = new Point[3];
+
+        public string ButtonName => "Triangle";
+
+        public IShapeCreatorPlugin ButtonTag => new TriangleCreator();
+
+        public Point Point1 { get; set; }
+        public Point Point2 { get; set; }
 
         private void DistributeCoords()
         {
@@ -23,7 +28,7 @@ namespace draw_shapes
             Points[2] = new Point(X3, Y3);
         }
 
-        public override void Draw(Graphics graph)
+        public void Draw(Graphics graph)
         {
             DistributeCoords();
 
@@ -32,6 +37,5 @@ namespace draw_shapes
                 graph.DrawPolygon(pen, Points);
             }
         }
-
     }
 }

@@ -5,8 +5,8 @@ namespace Plugins
 {
     public class Line : IShapePlugin
     {        
-        public Point Point1 { get; set; }
-        public Point Point2 { get; set; }
+        public virtual Point Point1 { get; set; }
+        public virtual Point Point2 { get; set; }
         public virtual string ButtonName => "Line";
         public virtual IShapeCreatorPlugin ButtonTag => new LineCreator();
         public virtual void Draw(Graphics graphics)

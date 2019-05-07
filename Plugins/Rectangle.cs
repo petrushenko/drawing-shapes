@@ -4,10 +4,14 @@ using PluginInterface;
 
 namespace Plugins
 {
-    public class Rectangle : Line, IShapePlugin
+    public class Rectangle : IShapePlugin
     {
-        public override IShapeCreatorPlugin ButtonTag => new RectangleCreator();
-        public override string ButtonName => "Rectangle";
+        public virtual IShapeCreatorPlugin ButtonTag => new RectangleCreator();
+        public virtual string ButtonName => "Rectangle";
+
+        public virtual Point Point1 { get; set ; }
+        public virtual Point Point2 { get; set; }
+
         public int GetWidth()
         {
             return Math.Abs(Point2.X - Point1.X);
@@ -39,7 +43,7 @@ namespace Plugins
             Point2 = pt2;
         }
 
-        public override void Draw(Graphics graph)
+        public virtual void Draw(Graphics graph)
         {
             CoordsSwap();
             using (Pen pen = new Pen(Color.Black, 3))
