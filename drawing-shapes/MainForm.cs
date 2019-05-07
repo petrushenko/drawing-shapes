@@ -45,7 +45,7 @@ namespace draw_shapes
 
         private void ButtonsInitialize()
         {
-            int X = 700;
+            int X = 10;
             int Y = 10;
             foreach (IShapePlugin shapePlugin in ShapePlugins)
             {
@@ -55,11 +55,11 @@ namespace draw_shapes
                     Tag = shapePlugin.ButtonTag,
                     Text = shapePlugin.ButtonName,
                     Location = new Point(X, Y),
-                    Anchor = AnchorStyles.Right,
+                    Anchor = AnchorStyles.Left | AnchorStyles.Top,
                 };
                 button.Click += ShapeButton_Click;
                 Y += 25;
-                Controls.Add(button);
+                pnlShapes.Controls.Add(button);
             }
         }
 
@@ -166,14 +166,10 @@ namespace draw_shapes
             DoDrawing();
         }
 
-        private void BtnUndo_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void FrmMain_Resize(object sender, EventArgs e)
         {
             UpdateBufferPicture();
+            DoDrawing();
         }
     }
 }

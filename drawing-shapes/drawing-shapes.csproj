@@ -54,8 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Figures\Circle.cs" />
-    <Compile Include="Figures\CircleCreator.cs" />
     <Compile Include="Serializer\Deserializer.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -66,8 +64,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializer\Serializer.cs" />
-    <Compile Include="Figures\Square.cs" />
-    <Compile Include="Figures\SquareCreator.cs" />
     <Compile Include="StandartFigures\Line.cs" />
     <Compile Include="StandartFigures\LineCreator.cs" />
     <EmbeddedResource Include="MainForm.resx">
