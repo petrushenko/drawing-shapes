@@ -4,9 +4,9 @@ using PluginInterface;
 
 namespace Plugins
 {
-    public class Rectangle : IShapePlugin
+    public class Rectangle : IShape
     {
-        public virtual IShapeCreatorPlugin ButtonTag => new RectangleCreator();
+        public virtual IShapeCreator ButtonTag => new RectangleCreator();
         public virtual string ButtonName => "Rectangle";
 
         public virtual Point Point1 { get; set ; }

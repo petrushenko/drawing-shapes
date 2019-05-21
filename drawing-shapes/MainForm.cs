@@ -14,11 +14,11 @@ namespace draw_shapes
     {
         private readonly string PluginPath = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
 
-        public List<IShapePlugin> ShapePlugins = new List<IShapePlugin>();
+        public List<IShape> ShapePlugins = new List<IShape>();
 
-        public IShapeCreatorPlugin ShapeCreator { get; set; }
+        public IShapeCreator ShapeCreator { get; set; }
 
-        private IShapePlugin TempShape { get; set; }
+        private IShape TempShape { get; set; }
 
         private Point FirstPoint { get; set; }
 
@@ -47,7 +47,7 @@ namespace draw_shapes
         {
             int X = 10;
             int Y = 10;
-            foreach (IShapePlugin shapePlugin in ShapePlugins)
+            foreach (IShape shapePlugin in ShapePlugins)
             {
                 Button button = new Button
                 {
@@ -66,7 +66,7 @@ namespace draw_shapes
         private void ShapeButton_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
-            ShapeCreator = button.Tag as IShapeCreatorPlugin;
+            ShapeCreator = button.Tag as IShapeCreator;
         }
 
         private void ShapePluginsUpload()
@@ -84,12 +84,12 @@ namespace draw_shapes
                 Assembly asm = Assembly.LoadFrom(file);
                 //ищем типы, имплементирующие наш интерфейс IPlugin,
                 //чтобы не захватить лишнего
-                var types = asm.GetTypes().Where(t => t.GetInterfaces().Where(i => i.FullName == typeof(IShapePlugin).FullName).Any());
+                var types = asm.GetTypes().Where(t => t.GetInterfaces().Where(i => i.FullName == typeof(IShape).FullName).Any());
 
                 //заполняем экземплярами полученных типов коллекцию плагинов
                 foreach (var type in types)
                 {
-                    var plugin = asm.CreateInstance(type.FullName) as IShapePlugin;
+                    var plugin = asm.CreateInstance(type.FullName) as IShape;
                     ShapePlugins.Add(plugin);
                 }
             }
@@ -99,7 +99,7 @@ namespace draw_shapes
         {
             ClearScreen();
             Graphics drawingArea = Graphics.FromImage(BufferedPicture);
-            foreach (IShapePlugin shapePlugin in ShapePlugins)
+            foreach (IShape shapePlugin in ShapePlugins)
             {
                 shapePlugin.Draw(drawingArea);
             }
@@ -120,7 +120,7 @@ namespace draw_shapes
         {
             if (ShapeCreator != null)
             {
-                IShapePlugin currShape = ShapeCreator.GetShape();
+                IShape currShape = ShapeCreator.GetShape();
                 currShape.Point1 = FirstPoint;
                 currShape.Point2 = new Point(e.X, e.Y);
                 ShapePlugins.Add(currShape);

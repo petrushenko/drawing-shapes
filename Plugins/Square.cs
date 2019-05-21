@@ -5,7 +5,7 @@ namespace Plugins
 {
     public class Square : Rectangle
     {
-        public override IShapeCreatorPlugin ButtonTag => new SquareCreator();
+        public override IShapeCreator ButtonTag => new SquareCreator();
 
         public override string ButtonName => "Square";
 

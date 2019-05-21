@@ -8,7 +8,7 @@ namespace Plugins
     {
         public override string ButtonName => "Ellipse";
 
-        public override IShapeCreatorPlugin ButtonTag => new EllipseCreator();
+        public override IShapeCreator ButtonTag => new EllipseCreator();
 
         public override void Draw(Graphics graphics)
         {

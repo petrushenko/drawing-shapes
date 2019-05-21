@@ -3,9 +3,9 @@ using PluginInterface;
 
 namespace Plugins
 {
-    public class RectangleCreator : IShapeCreatorPlugin
+    public class RectangleCreator : IShapeCreator
     {
-        public virtual IShapePlugin GetShape()
+        public virtual IShape GetShape()
         {
             return new Rectangle();   
         }

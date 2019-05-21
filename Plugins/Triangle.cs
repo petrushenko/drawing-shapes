@@ -3,13 +3,13 @@ using PluginInterface;
 
 namespace Plugins
 {
-    public class Triangle : IShapePlugin
+    public class Triangle : IShape
     {
         public Point[] Points = new Point[3];
 
         public string ButtonName => "Triangle";
 
-        public IShapeCreatorPlugin ButtonTag => new TriangleCreator();
+        public IShapeCreator ButtonTag => new TriangleCreator();
 
         public Point Point1 { get; set; }
         public Point Point2 { get; set; }

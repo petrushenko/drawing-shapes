@@ -13,7 +13,7 @@ namespace Plugins
 
         public override string ButtonName => "Circle";
 
-        public override IShapeCreatorPlugin ButtonTag => new CircleCreator();
+        public override IShapeCreator ButtonTag => new CircleCreator();
 
         public override void Draw(Graphics graphics)
         {

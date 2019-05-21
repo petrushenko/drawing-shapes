@@ -2,9 +2,9 @@
 
 namespace Plugins
 {
-    public class TriangleCreator : IShapeCreatorPlugin
+    public class TriangleCreator : IShapeCreator
     {
-        public IShapePlugin GetShape()
+        public IShape GetShape()
         {
             return new Triangle();
         }

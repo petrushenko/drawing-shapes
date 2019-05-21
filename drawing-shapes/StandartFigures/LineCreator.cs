@@ -2,9 +2,9 @@
 
 namespace Plugins
 {
-    public class LineCreator : IShapeCreatorPlugin
+    public class LineCreator : IShapeCreator
     {
-        public virtual IShapePlugin GetShape()
+        public virtual IShape GetShape()
         {
             return new Line();
         }
