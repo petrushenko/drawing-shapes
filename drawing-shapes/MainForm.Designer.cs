@@ -34,8 +34,11 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.gbShapes = new System.Windows.Forms.GroupBox();
             this.pnlShapes = new System.Windows.Forms.Panel();
+            this.create = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).BeginInit();
             this.gbShapes.SuspendLayout();
+            this.pnlShapes.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlDrawingArea
@@ -100,10 +103,32 @@
             // pnlShapes
             // 
             this.pnlShapes.AutoScroll = true;
+            this.pnlShapes.Controls.Add(this.button2);
+            this.pnlShapes.Controls.Add(this.create);
             this.pnlShapes.Location = new System.Drawing.Point(0, 25);
             this.pnlShapes.Name = "pnlShapes";
             this.pnlShapes.Size = new System.Drawing.Size(139, 483);
             this.pnlShapes.TabIndex = 0;
+            // 
+            // create
+            // 
+            this.create.Location = new System.Drawing.Point(6, 390);
+            this.create.Name = "create";
+            this.create.Size = new System.Drawing.Size(130, 35);
+            this.create.TabIndex = 12;
+            this.create.Text = "dra";
+            this.create.UseVisualStyleBackColor = true;
+            this.create.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(6, 431);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(130, 49);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "create";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // FrmMain
             // 
@@ -124,6 +149,7 @@
             this.Resize += new System.EventHandler(this.FrmMain_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).EndInit();
             this.gbShapes.ResumeLayout(false);
+            this.pnlShapes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -135,6 +161,8 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.GroupBox gbShapes;
         private System.Windows.Forms.Panel pnlShapes;
+        private System.Windows.Forms.Button create;
+        private System.Windows.Forms.Button button2;
     }
 }
 

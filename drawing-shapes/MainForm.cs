@@ -11,7 +11,15 @@ using System.Windows.Forms;
 namespace draw_shapes
 {
     public partial class FrmMain : Form
-    {
+    { 
+
+        UserShape us;
+
+        public bool flag = false;
+
+        bool flag2 = false;
+
+
         private readonly string PluginPath = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
 
         public List<IShape> ShapePlugins = new List<IShape>();
@@ -61,6 +69,7 @@ namespace draw_shapes
                 Y += 25;
                 pnlShapes.Controls.Add(button);
             }
+            ShapePlugins.Clear();
         }
 
         private void ShapeButton_Click(object sender, EventArgs e)
@@ -95,11 +104,11 @@ namespace draw_shapes
             }
         }
 
-        private void DoDrawing()
+        private void DoDrawing(List<IShape> shapes)
         {
             ClearScreen();
             Graphics drawingArea = Graphics.FromImage(BufferedPicture);
-            foreach (IShape shapePlugin in ShapePlugins)
+            foreach (IShape shapePlugin in shapes)
             {
                 shapePlugin.Draw(drawingArea);
             }
@@ -109,15 +118,30 @@ namespace draw_shapes
 
         private void PnlDrawingArea_MouseDown(object sender, MouseEventArgs e)
         {
+            FirstPoint = new Point(e.X, e.Y);
             if (ShapeCreator != null)
             {
-                FirstPoint = new Point(e.X, e.Y);
+                
                 TempShape = ShapeCreator.GetShape();
             }
         }
 
         private void PnlDrawingArea_MouseUp(object sender, MouseEventArgs e)
         {
+            if (flag)
+            {
+                us = new UserShape(ShapePlugins, FirstPoint, new Point(e.X, e.Y));
+                flag = false;
+            }
+
+            if (flag2)
+            {
+                //uf.RebuildCoords(FirstPoint, new Point(e.X, e.Y));
+                UserShape newUS = us.Clone() as UserShape;
+                newUS.Draw(ShapePlugins, FirstPoint, new Point(e.X, e.Y));
+                flag2 = false;
+                ShapeCreator = new LineCreator();
+            }
             if (ShapeCreator != null)
             {
                 IShape currShape = ShapeCreator.GetShape();
@@ -125,7 +149,8 @@ namespace draw_shapes
                 currShape.Point2 = new Point(e.X, e.Y);
                 ShapePlugins.Add(currShape);
                 TempShape = null;
-                DoDrawing();
+                DoDrawing(ShapePlugins);
+                //DoDrawing(uf.Shapes);
             }
         }
 
@@ -140,7 +165,7 @@ namespace draw_shapes
         private void BtnClear_Click(object sender, EventArgs e)
         {
             ShapePlugins.Clear();
-            DoDrawing();
+            DoDrawing(ShapePlugins);
         }
 
         private void PnlDrawingArea_MouseMove(object sender, MouseEventArgs e)
@@ -150,7 +175,7 @@ namespace draw_shapes
                 TempShape.Point1 = FirstPoint;
                 TempShape.Point2 = new Point(e.X, e.Y);
                 ShapePlugins.Add(TempShape);
-                DoDrawing();
+                DoDrawing(ShapePlugins);
                 ShapePlugins.Remove(TempShape);
             }
         }
@@ -163,13 +188,26 @@ namespace draw_shapes
         private void BtnDesirialized_Click(object sender, EventArgs e)
         {
             Deserializer.DoDeserialization(ref ShapePlugins);
-            DoDrawing();
+            DoDrawing(ShapePlugins);
         }
 
         private void FrmMain_Resize(object sender, EventArgs e)
         {
             UpdateBufferPicture();
-            DoDrawing();
+            DoDrawing(ShapePlugins);
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            flag2 = true;
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            flag = true;
+
+            ShapeCreator = null;
+            //DoDrawing(uf.Shapes);
         }
     }
 }

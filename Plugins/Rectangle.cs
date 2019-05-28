@@ -51,5 +51,13 @@ namespace Plugins
                 graph.DrawRectangle(pen, Point1.X, Point1.Y, GetWidth(), GetHeight());
             }
         }
+
+        public virtual IShape Clone()
+        {
+            Rectangle rectangle = new Rectangle();
+            rectangle.Point1 = Point1;
+            rectangle.Point2 = Point2;
+            return rectangle;
+        }
     }
 }

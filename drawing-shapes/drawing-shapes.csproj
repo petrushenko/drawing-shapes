@@ -66,6 +66,8 @@
     <Compile Include="Serializer\Serializer.cs" />
     <Compile Include="StandartFigures\Line.cs" />
     <Compile Include="StandartFigures\LineCreator.cs" />
+    <Compile Include="UserFigures\UserFigures.cs" />
+    <Compile Include="UserShape.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

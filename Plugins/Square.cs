@@ -5,6 +5,13 @@ namespace Plugins
 {
     public class Square : Rectangle
     {
+        public override IShape Clone()
+        {
+            Square square = new Square();
+            square.Point1 = Point1;
+            square.Point2 = Point2;
+            return square;
+        }
         public override IShapeCreator ButtonTag => new SquareCreator();
 
         public override string ButtonName => "Square";

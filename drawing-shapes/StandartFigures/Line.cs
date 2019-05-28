@@ -5,6 +5,13 @@ namespace Plugins
 {
     public class Line : IShape
     {        
+        public IShape Clone()
+        {
+            Line line = new Line();
+            line.Point1 = Point1;
+            line.Point2 = Point2;
+            return line;
+        }
         public virtual Point Point1 { get; set; }
         public virtual Point Point2 { get; set; }
         public virtual string ButtonName => "Line";

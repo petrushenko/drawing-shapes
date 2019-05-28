@@ -10,7 +10,13 @@ namespace Plugins
 {
     public class Circle : Ellipse
     {
-
+        public override IShape Clone()
+        {
+            Circle circle = new Circle();
+            circle.Point1 = Point1;
+            circle.Point2 = Point2;
+            return circle;
+        }
         public override string ButtonName => "Circle";
 
         public override IShapeCreator ButtonTag => new CircleCreator();
