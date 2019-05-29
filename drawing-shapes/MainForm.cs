@@ -140,8 +140,9 @@ namespace draw_shapes
                 Theme = elem.InnerText;
                 doc.Save(ConfigFile);
             }
-            catch
+            catch (Exception e)
             {
+                //MessageBox.Show(e.Message);
                 Theme = DayTheme;
             }
             SetTheme();
@@ -198,8 +199,9 @@ namespace draw_shapes
                 Language = elem.InnerText;
                 doc.Save(ConfigFile);
             }
-            catch
+            catch (Exception e)
             {
+                //MessageBox.Show(e.Message);
                 Language = English;
             }
             SetLanguage();
@@ -207,7 +209,7 @@ namespace draw_shapes
 
         private void SetLanguage()
         {
-            if (Language != English && Language != Russian)
+            if (Language != English || Language != Russian)
             {
                 Language = English;
             }
