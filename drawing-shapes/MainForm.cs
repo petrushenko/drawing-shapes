@@ -142,10 +142,6 @@ namespace draw_shapes
             }
             catch
             {
-<<<<<<< HEAD
-=======
-                //MessageBox.Show(e.Message);
->>>>>>> 1541b8f8a5d2c8d61786c8ac294029742db8b0ef
                 Theme = DayTheme;
             }
             SetTheme();
@@ -204,10 +200,6 @@ namespace draw_shapes
             }
             catch
             {
-<<<<<<< HEAD
-=======
-                //MessageBox.Show(e.Message);
->>>>>>> 1541b8f8a5d2c8d61786c8ac294029742db8b0ef
                 Language = English;
             }
             SetLanguage();
@@ -215,11 +207,7 @@ namespace draw_shapes
 
         private void SetLanguage()
         {
-<<<<<<< HEAD
             if (Language != English && Language != Russian)
-=======
-            if (Language != English || Language != Russian)
->>>>>>> 1541b8f8a5d2c8d61786c8ac294029742db8b0ef
             {
                 Language = English;
             }
