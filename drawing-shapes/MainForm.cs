@@ -89,12 +89,44 @@ namespace draw_shapes
                 textWritter.Close();
                 doc.Load(ConfigFile);
             }
-            XmlNode theme = doc.CreateElement("Theme");
-            XmlNode AppLang = doc.CreateElement("Language");
-            doc.DocumentElement.AppendChild(AppLang);
-            doc.DocumentElement.AppendChild(theme);
-            AppLang.InnerText = Language;
-            theme.InnerText = Theme;
+
+            XmlElement theme = doc.DocumentElement["Theme"];
+
+            if (theme == null)
+            {
+                theme = doc.CreateElement("Theme");
+                theme.InnerText = Theme;
+                doc.DocumentElement.AppendChild(theme);
+            }
+            else
+            {
+                theme.InnerText = Theme;
+            }
+
+            XmlElement language = doc.DocumentElement["Language"];
+
+            if (language == null)
+            {
+                language = doc.CreateElement("Language");
+                language.InnerText = Language;
+                doc.DocumentElement.AppendChild(language);
+            }
+            else
+            {
+                language.InnerText = Language;
+            }
+
+            foreach (XmlNode node in doc.DocumentElement)
+            {
+                if (node.Name == "Language")
+                {
+                    Language = node.InnerText;
+                }
+                if (node.Name == "Theme")
+                {
+                    Theme = node.InnerText;
+                }
+            }
             doc.Save(ConfigFile);
         }
 
@@ -110,7 +142,7 @@ namespace draw_shapes
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                //MessageBox.Show(e.Message);
                 Theme = DayTheme;
             }
             SetTheme();
@@ -150,6 +182,7 @@ namespace draw_shapes
                 }
                 else
                 {
+                    Theme = DayTheme;
                     SetDayTheme();
                 }
             }
@@ -168,7 +201,7 @@ namespace draw_shapes
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                //MessageBox.Show(e.Message);
                 Language = English;
             }
             SetLanguage();
@@ -176,6 +209,10 @@ namespace draw_shapes
 
         private void SetLanguage()
         {
+            if (Language != English || Language != Russian)
+            {
+                Language = English;
+            }
             try
             {
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(Language);
