@@ -120,6 +120,9 @@
   <data name="ErrorLoadPlugin" xml:space="preserve">
     <value>Не удалось загрузить плагин из </value>
   </data>
+  <data name="ReloadMessage" xml:space="preserve">
+    <value>Изменения окончательно вступят в силу после перезагрузки. Перезапустить сейчас?</value>
+  </data>
   <data name="ShapeNameMessage" xml:space="preserve">
     <value>Введите имя фигуры </value>
   </data>

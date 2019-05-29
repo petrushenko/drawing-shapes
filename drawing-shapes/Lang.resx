@@ -120,6 +120,9 @@
   <data name="ErrorLoadPlugin" xml:space="preserve">
     <value>Can't load plugin from </value>
   </data>
+  <data name="ReloadMessage" xml:space="preserve">
+    <value>Changes will take effect after restarting. Restart application?</value>
+  </data>
   <data name="ShapeNameMessage" xml:space="preserve">
     <value>Enter the shape name </value>
   </data>

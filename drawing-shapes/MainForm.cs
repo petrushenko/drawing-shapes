@@ -26,8 +26,9 @@ namespace draw_shapes
         private const string DayTheme = "Day";
 
         private const string NightTheme = "Night";
-        private const string ReloadMessage = "Изменения окончательно вступят в силу после перезагрузки.\nПерезапустить сейчас?";
+        
         private const string ReloadCaption = "Reload";
+
         private const string ConfigFile = "config.xml";
 
         private string Language { get; set; }
@@ -67,7 +68,7 @@ namespace draw_shapes
 
         private void ReloadApplication()
         {
-            if (MessageBox.Show(ReloadMessage, ReloadCaption, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show(Lang.ReloadMessage, ReloadCaption, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Application.Restart();
             }
@@ -89,12 +90,44 @@ namespace draw_shapes
                 textWritter.Close();
                 doc.Load(ConfigFile);
             }
-            XmlNode theme = doc.CreateElement("Theme");
-            XmlNode AppLang = doc.CreateElement("Language");
-            doc.DocumentElement.AppendChild(AppLang);
-            doc.DocumentElement.AppendChild(theme);
-            AppLang.InnerText = Language;
-            theme.InnerText = Theme;
+
+            XmlElement theme = doc.DocumentElement["Theme"];
+
+            if (theme == null)
+            {
+                theme = doc.CreateElement("Theme");
+                theme.InnerText = Theme;
+                doc.DocumentElement.AppendChild(theme);
+            }
+            else
+            {
+                theme.InnerText = Theme;
+            }
+
+            XmlElement language = doc.DocumentElement["Language"];
+
+            if (language == null)
+            {
+                language = doc.CreateElement("Language");
+                language.InnerText = Language;
+                doc.DocumentElement.AppendChild(language);
+            }
+            else
+            {
+                language.InnerText = Language;
+            }
+
+            foreach (XmlNode node in doc.DocumentElement)
+            {
+                if (node.Name == "Language")
+                {
+                    Language = node.InnerText;
+                }
+                if (node.Name == "Theme")
+                {
+                    Theme = node.InnerText;
+                }
+            }
             doc.Save(ConfigFile);
         }
 
@@ -108,9 +141,8 @@ namespace draw_shapes
                 Theme = elem.InnerText;
                 doc.Save(ConfigFile);
             }
-            catch (Exception e)
+            catch
             {
-                MessageBox.Show(e.Message);
                 Theme = DayTheme;
             }
             SetTheme();
@@ -131,7 +163,7 @@ namespace draw_shapes
             BackColor = Color.SlateGray;
             foreach (Control control in Controls)
             {
-                control.BackColor = Color.White;
+                control.BackColor = Color.LightGray;
             }
             menu.BackColor = Color.DarkGray;
         }
@@ -150,6 +182,7 @@ namespace draw_shapes
                 }
                 else
                 {
+                    Theme = DayTheme;
                     SetDayTheme();
                 }
             }
@@ -166,9 +199,8 @@ namespace draw_shapes
                 Language = elem.InnerText;
                 doc.Save(ConfigFile);
             }
-            catch (Exception e)
+            catch
             {
-                MessageBox.Show(e.Message);
                 Language = English;
             }
             SetLanguage();
@@ -176,6 +208,10 @@ namespace draw_shapes
 
         private void SetLanguage()
         {
+            if (Language != English && Language != Russian)
+            {
+                Language = English;
+            }
             try
             {
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(Language);

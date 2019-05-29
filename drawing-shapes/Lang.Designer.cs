@@ -70,6 +70,15 @@ namespace draw_shapes {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changes will take effect after restarting. Restart application?.
+        /// </summary>
+        internal static string ReloadMessage {
+            get {
+                return ResourceManager.GetString("ReloadMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter the shape name .
         /// </summary>
         internal static string ShapeNameMessage {
