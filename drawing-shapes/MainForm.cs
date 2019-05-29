@@ -26,7 +26,7 @@ namespace draw_shapes
         private const string DayTheme = "Day";
 
         private const string NightTheme = "Night";
-        private const string ReloadMessage = "Изменения окончательно вступят в силу после перезагрузки.\nПерезапустить сейчас?";
+        
         private const string ReloadCaption = "Reload";
         private const string ConfigFile = "config.xml";
 
@@ -67,7 +67,7 @@ namespace draw_shapes
 
         private void ReloadApplication()
         {
-            if (MessageBox.Show(ReloadMessage, ReloadCaption, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show(Lang.ReloadMessage, ReloadCaption, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Application.Restart();
             }
@@ -140,9 +140,12 @@ namespace draw_shapes
                 Theme = elem.InnerText;
                 doc.Save(ConfigFile);
             }
-            catch (Exception e)
+            catch
             {
+<<<<<<< HEAD
+=======
                 //MessageBox.Show(e.Message);
+>>>>>>> 1541b8f8a5d2c8d61786c8ac294029742db8b0ef
                 Theme = DayTheme;
             }
             SetTheme();
@@ -199,9 +202,12 @@ namespace draw_shapes
                 Language = elem.InnerText;
                 doc.Save(ConfigFile);
             }
-            catch (Exception e)
+            catch
             {
+<<<<<<< HEAD
+=======
                 //MessageBox.Show(e.Message);
+>>>>>>> 1541b8f8a5d2c8d61786c8ac294029742db8b0ef
                 Language = English;
             }
             SetLanguage();
@@ -209,7 +215,11 @@ namespace draw_shapes
 
         private void SetLanguage()
         {
+<<<<<<< HEAD
+            if (Language != English && Language != Russian)
+=======
             if (Language != English || Language != Russian)
+>>>>>>> 1541b8f8a5d2c8d61786c8ac294029742db8b0ef
             {
                 Language = English;
             }
