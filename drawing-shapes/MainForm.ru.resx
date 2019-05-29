@@ -117,374 +117,51 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pnlDrawingArea.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pnlDrawingArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 50</value>
-  </data>
-  <data name="pnlDrawingArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>856, 638</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pnlDrawingArea.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;pnlDrawingArea.Name" xml:space="preserve">
-    <value>pnlDrawingArea</value>
-  </data>
-  <data name="&gt;&gt;pnlDrawingArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlDrawingArea.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlDrawingArea.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="btnSirialize.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="btnSirialize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>874, 532</value>
-  </data>
-  <data name="btnSirialize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 44</value>
-  </data>
-  <data name="btnSirialize.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
   <data name="btnSirialize.Text" xml:space="preserve">
-    <value>Serealize</value>
-  </data>
-  <data name="&gt;&gt;btnSirialize.Name" xml:space="preserve">
-    <value>btnSirialize</value>
-  </data>
-  <data name="&gt;&gt;btnSirialize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnSirialize.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnSirialize.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="btnDesirialized.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="btnDesirialized.Location" type="System.Drawing.Point, System.Drawing">
-    <value>874, 582</value>
-  </data>
-  <data name="btnDesirialized.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 44</value>
-  </data>
-  <data name="btnDesirialized.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>Сериализовать</value>
   </data>
   <data name="btnDesirialized.Text" xml:space="preserve">
-    <value>Desirialize</value>
-  </data>
-  <data name="&gt;&gt;btnDesirialized.Name" xml:space="preserve">
-    <value>btnDesirialized</value>
-  </data>
-  <data name="&gt;&gt;btnDesirialized.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnDesirialized.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnDesirialized.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="btnClear.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="btnClear.Location" type="System.Drawing.Point, System.Drawing">
-    <value>874, 632</value>
-  </data>
-  <data name="btnClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 44</value>
-  </data>
-  <data name="btnClear.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>Десериализовать</value>
   </data>
   <data name="btnClear.Text" xml:space="preserve">
-    <value>Clear</value>
-  </data>
-  <data name="&gt;&gt;btnClear.Name" xml:space="preserve">
-    <value>btnClear</value>
-  </data>
-  <data name="&gt;&gt;btnClear.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnClear.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnClear.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="gbShapes.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="&gt;&gt;pnlShapes.Name" xml:space="preserve">
-    <value>pnlShapes</value>
-  </data>
-  <data name="&gt;&gt;pnlShapes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlShapes.Parent" xml:space="preserve">
-    <value>gbShapes</value>
-  </data>
-  <data name="&gt;&gt;pnlShapes.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="gbShapes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>874, 50</value>
-  </data>
-  <data name="gbShapes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 476</value>
-  </data>
-  <data name="gbShapes.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>Очистить</value>
   </data>
   <data name="gbShapes.Text" xml:space="preserve">
-    <value>Shapes</value>
-  </data>
-  <data name="&gt;&gt;gbShapes.Name" xml:space="preserve">
-    <value>gbShapes</value>
-  </data>
-  <data name="&gt;&gt;gbShapes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbShapes.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;gbShapes.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="pnlShapes.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="pnlShapes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="pnlShapes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 445</value>
-  </data>
-  <data name="pnlShapes.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;pnlShapes.Name" xml:space="preserve">
-    <value>pnlShapes</value>
-  </data>
-  <data name="&gt;&gt;pnlShapes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlShapes.Parent" xml:space="preserve">
-    <value>gbShapes</value>
-  </data>
-  <data name="&gt;&gt;pnlShapes.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="gbUserShapes.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="&gt;&gt;pnlUserShapes.Name" xml:space="preserve">
-    <value>pnlUserShapes</value>
-  </data>
-  <data name="&gt;&gt;pnlUserShapes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlUserShapes.Parent" xml:space="preserve">
-    <value>gbUserShapes</value>
-  </data>
-  <data name="&gt;&gt;pnlUserShapes.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="gbUserShapes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1052, 50</value>
-  </data>
-  <data name="gbUserShapes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 476</value>
-  </data>
-  <data name="gbUserShapes.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>Фигуры</value>
   </data>
   <data name="gbUserShapes.Text" xml:space="preserve">
-    <value>User Shapes</value>
-  </data>
-  <data name="&gt;&gt;gbUserShapes.Name" xml:space="preserve">
-    <value>gbUserShapes</value>
-  </data>
-  <data name="&gt;&gt;gbUserShapes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbUserShapes.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;gbUserShapes.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pnlUserShapes.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="pnlUserShapes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="pnlUserShapes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 445</value>
-  </data>
-  <data name="pnlUserShapes.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;pnlUserShapes.Name" xml:space="preserve">
-    <value>pnlUserShapes</value>
-  </data>
-  <data name="&gt;&gt;pnlUserShapes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlUserShapes.Parent" xml:space="preserve">
-    <value>gbUserShapes</value>
-  </data>
-  <data name="&gt;&gt;pnlUserShapes.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnCreateShape.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="btnCreateShape.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1052, 532</value>
-  </data>
-  <data name="btnCreateShape.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 44</value>
-  </data>
-  <data name="btnCreateShape.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>Польз. фигуры</value>
   </data>
   <data name="btnCreateShape.Text" xml:space="preserve">
-    <value>Create Shape</value>
-  </data>
-  <data name="&gt;&gt;btnCreateShape.Name" xml:space="preserve">
-    <value>btnCreateShape</value>
-  </data>
-  <data name="&gt;&gt;btnCreateShape.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnCreateShape.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnCreateShape.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="btnDeleteUserFigure.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="btnDeleteUserFigure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1052, 582</value>
-  </data>
-  <data name="btnDeleteUserFigure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 44</value>
-  </data>
-  <data name="btnDeleteUserFigure.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>Создать фигуру</value>
   </data>
   <data name="btnDeleteUserFigure.Text" xml:space="preserve">
-    <value>Delete User Figure</value>
+    <value>Удалить фигуру</value>
   </data>
-  <data name="&gt;&gt;btnDeleteUserFigure.Name" xml:space="preserve">
-    <value>btnDeleteUserFigure</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="viewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 29</value>
   </data>
-  <data name="&gt;&gt;btnDeleteUserFigure.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="viewToolStripMenuItem.Text" xml:space="preserve">
+    <value>Вид</value>
   </data>
-  <data name="&gt;&gt;btnDeleteUserFigure.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Язык</value>
   </data>
-  <data name="&gt;&gt;btnDeleteUserFigure.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="russianToolStripMenuItem.Text" xml:space="preserve">
+    <value>Русский</value>
   </data>
-  <metadata name="menu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="menu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="englishToolStripMenuItem.Text" xml:space="preserve">
+    <value>Английский</value>
   </data>
-  <data name="menu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1231, 33</value>
+  <data name="themeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Тема</value>
   </data>
-  <data name="menu.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+  <data name="dayToolStripMenuItem.Text" xml:space="preserve">
+    <value>Дневная</value>
   </data>
-  <data name="menu.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menu.Name" xml:space="preserve">
-    <value>menu</value>
-  </data>
-  <data name="&gt;&gt;menu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menu.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menu.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="viewMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 29</value>
-  </data>
-  <data name="viewMenu.Text" xml:space="preserve">
-    <value>View</value>
-  </data>
-  <data name="languageSubMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
-  </data>
-  <data name="languageSubMenu.Text" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="russianSubMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
-  </data>
-  <data name="russianSubMenu.Text" xml:space="preserve">
-    <value>Russian</value>
-  </data>
-  <data name="englishSubMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
-  </data>
-  <data name="englishSubMenu.Text" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="themeSubMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
-  </data>
-  <data name="themeSubMenu.Text" xml:space="preserve">
-    <value>Theme</value>
-  </data>
-  <data name="daySubMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
-  </data>
-  <data name="daySubMenu.Text" xml:space="preserve">
-    <value>Day</value>
-  </data>
-  <data name="nightSubMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
-  </data>
-  <data name="nightSubMenu.Text" xml:space="preserve">
-    <value>Night</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>9, 20</value>
-  </data>
-  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1231, 699</value>
+  <data name="nightToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ночная</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1618,58 +1295,7 @@
         /+AH///////////////////wD/////////8=
 </value>
   </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Shapes</value>
-  </data>
-  <data name="&gt;&gt;viewMenu.Name" xml:space="preserve">
-    <value>viewMenu</value>
-  </data>
-  <data name="&gt;&gt;viewMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;languageSubMenu.Name" xml:space="preserve">
-    <value>languageSubMenu</value>
-  </data>
-  <data name="&gt;&gt;languageSubMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;russianSubMenu.Name" xml:space="preserve">
-    <value>russianSubMenu</value>
-  </data>
-  <data name="&gt;&gt;russianSubMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;englishSubMenu.Name" xml:space="preserve">
-    <value>englishSubMenu</value>
-  </data>
-  <data name="&gt;&gt;englishSubMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;themeSubMenu.Name" xml:space="preserve">
-    <value>themeSubMenu</value>
-  </data>
-  <data name="&gt;&gt;themeSubMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;daySubMenu.Name" xml:space="preserve">
-    <value>daySubMenu</value>
-  </data>
-  <data name="&gt;&gt;daySubMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nightSubMenu.Name" xml:space="preserve">
-    <value>nightSubMenu</value>
-  </data>
-  <data name="&gt;&gt;nightSubMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FrmMain</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Фигуры</value>
   </data>
 </root>

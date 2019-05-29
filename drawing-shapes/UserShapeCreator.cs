@@ -7,7 +7,7 @@ namespace draw_shapes
     public class UserShapeCreator
     {
         public List<IShape> Shapes = new List<IShape>();
-        public Point Point1 { get; set; }
+        public Point Point1 { get; set; } // starting coords
         public Point Point2 { get; set; }
         public string Name { get; set; }
 

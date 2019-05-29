@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.pnlDrawingArea = new System.Windows.Forms.PictureBox();
             this.btnSirialize = new System.Windows.Forms.Button();
             this.btnDesirialized = new System.Windows.Forms.Button();
@@ -38,21 +39,25 @@
             this.pnlUserShapes = new System.Windows.Forms.Panel();
             this.btnCreateShape = new System.Windows.Forms.Button();
             this.btnDeleteUserFigure = new System.Windows.Forms.Button();
+            this.menu = new System.Windows.Forms.MenuStrip();
+            this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.languageSubMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.russianSubMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.englishSubMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.themeSubMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.daySubMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.nightSubMenu = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).BeginInit();
             this.gbShapes.SuspendLayout();
             this.gbUserShapes.SuspendLayout();
+            this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlDrawingArea
             // 
-            this.pnlDrawingArea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.pnlDrawingArea, "pnlDrawingArea");
             this.pnlDrawingArea.BackColor = System.Drawing.Color.White;
-            this.pnlDrawingArea.Location = new System.Drawing.Point(12, 12);
             this.pnlDrawingArea.Name = "pnlDrawingArea";
-            this.pnlDrawingArea.Size = new System.Drawing.Size(912, 676);
-            this.pnlDrawingArea.TabIndex = 8;
             this.pnlDrawingArea.TabStop = false;
             this.pnlDrawingArea.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlDrawingArea_MouseDown);
             this.pnlDrawingArea.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlDrawingArea_MouseMove);
@@ -60,121 +65,147 @@
             // 
             // btnSirialize
             // 
-            this.btnSirialize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSirialize.Location = new System.Drawing.Point(936, 532);
+            resources.ApplyResources(this.btnSirialize, "btnSirialize");
             this.btnSirialize.Name = "btnSirialize";
-            this.btnSirialize.Size = new System.Drawing.Size(160, 44);
-            this.btnSirialize.TabIndex = 9;
-            this.btnSirialize.Text = "Serealize";
             this.btnSirialize.UseVisualStyleBackColor = true;
             this.btnSirialize.Click += new System.EventHandler(this.BtnSerealize_Click);
             // 
             // btnDesirialized
             // 
-            this.btnDesirialized.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDesirialized.Location = new System.Drawing.Point(936, 582);
+            resources.ApplyResources(this.btnDesirialized, "btnDesirialized");
             this.btnDesirialized.Name = "btnDesirialized";
-            this.btnDesirialized.Size = new System.Drawing.Size(160, 44);
-            this.btnDesirialized.TabIndex = 10;
-            this.btnDesirialized.Text = "Desirialize";
             this.btnDesirialized.UseVisualStyleBackColor = true;
             this.btnDesirialized.Click += new System.EventHandler(this.BtnDesirialized_Click);
             // 
             // btnClear
             // 
-            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.Location = new System.Drawing.Point(936, 632);
+            resources.ApplyResources(this.btnClear, "btnClear");
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(160, 44);
-            this.btnClear.TabIndex = 11;
-            this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
             // gbShapes
             // 
-            this.gbShapes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.gbShapes, "gbShapes");
             this.gbShapes.Controls.Add(this.pnlShapes);
-            this.gbShapes.Location = new System.Drawing.Point(930, 12);
             this.gbShapes.Name = "gbShapes";
-            this.gbShapes.Size = new System.Drawing.Size(172, 514);
-            this.gbShapes.TabIndex = 0;
             this.gbShapes.TabStop = false;
-            this.gbShapes.Text = "Shapes";
             // 
             // pnlShapes
             // 
-            this.pnlShapes.AutoScroll = true;
-            this.pnlShapes.Location = new System.Drawing.Point(6, 25);
+            resources.ApplyResources(this.pnlShapes, "pnlShapes");
             this.pnlShapes.Name = "pnlShapes";
-            this.pnlShapes.Size = new System.Drawing.Size(160, 483);
-            this.pnlShapes.TabIndex = 0;
             // 
             // gbUserShapes
             // 
-            this.gbUserShapes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.gbUserShapes, "gbUserShapes");
             this.gbUserShapes.Controls.Add(this.pnlUserShapes);
-            this.gbUserShapes.Location = new System.Drawing.Point(1108, 12);
             this.gbUserShapes.Name = "gbUserShapes";
-            this.gbUserShapes.Size = new System.Drawing.Size(175, 514);
-            this.gbUserShapes.TabIndex = 12;
             this.gbUserShapes.TabStop = false;
-            this.gbUserShapes.Text = "User Shapes";
             // 
             // pnlUserShapes
             // 
-            this.pnlUserShapes.AutoScroll = true;
-            this.pnlUserShapes.Location = new System.Drawing.Point(6, 25);
+            resources.ApplyResources(this.pnlUserShapes, "pnlUserShapes");
             this.pnlUserShapes.Name = "pnlUserShapes";
-            this.pnlUserShapes.Size = new System.Drawing.Size(161, 483);
-            this.pnlUserShapes.TabIndex = 0;
             // 
             // btnCreateShape
             // 
-            this.btnCreateShape.Location = new System.Drawing.Point(1108, 532);
+            resources.ApplyResources(this.btnCreateShape, "btnCreateShape");
             this.btnCreateShape.Name = "btnCreateShape";
-            this.btnCreateShape.Size = new System.Drawing.Size(167, 44);
-            this.btnCreateShape.TabIndex = 13;
-            this.btnCreateShape.Text = "Create Shape";
             this.btnCreateShape.UseVisualStyleBackColor = true;
             this.btnCreateShape.Click += new System.EventHandler(this.BtnCreateShape_Click);
             // 
             // btnDeleteUserFigure
             // 
-            this.btnDeleteUserFigure.Location = new System.Drawing.Point(1108, 582);
+            resources.ApplyResources(this.btnDeleteUserFigure, "btnDeleteUserFigure");
             this.btnDeleteUserFigure.Name = "btnDeleteUserFigure";
-            this.btnDeleteUserFigure.Size = new System.Drawing.Size(167, 44);
-            this.btnDeleteUserFigure.TabIndex = 0;
-            this.btnDeleteUserFigure.Text = "Delete User Figure";
             this.btnDeleteUserFigure.UseVisualStyleBackColor = true;
             this.btnDeleteUserFigure.Click += new System.EventHandler(this.BtnDeleteUserFigure_Click);
             // 
+            // menu
+            // 
+            this.menu.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewMenu});
+            resources.ApplyResources(this.menu, "menu");
+            this.menu.Name = "menu";
+            // 
+            // viewMenu
+            // 
+            this.viewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.languageSubMenu,
+            this.themeSubMenu});
+            this.viewMenu.Name = "viewMenu";
+            resources.ApplyResources(this.viewMenu, "viewMenu");
+            // 
+            // languageSubMenu
+            // 
+            this.languageSubMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.russianSubMenu,
+            this.englishSubMenu});
+            this.languageSubMenu.Name = "languageSubMenu";
+            resources.ApplyResources(this.languageSubMenu, "languageSubMenu");
+            // 
+            // russianSubMenu
+            // 
+            this.russianSubMenu.Name = "russianSubMenu";
+            resources.ApplyResources(this.russianSubMenu, "russianSubMenu");
+            this.russianSubMenu.Click += new System.EventHandler(this.RussianToolStripMenuItem_Click);
+            // 
+            // englishSubMenu
+            // 
+            this.englishSubMenu.Name = "englishSubMenu";
+            resources.ApplyResources(this.englishSubMenu, "englishSubMenu");
+            this.englishSubMenu.Click += new System.EventHandler(this.EnglishToolStripMenuItem_Click);
+            // 
+            // themeSubMenu
+            // 
+            this.themeSubMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.daySubMenu,
+            this.nightSubMenu});
+            this.themeSubMenu.Name = "themeSubMenu";
+            resources.ApplyResources(this.themeSubMenu, "themeSubMenu");
+            // 
+            // daySubMenu
+            // 
+            this.daySubMenu.Name = "daySubMenu";
+            resources.ApplyResources(this.daySubMenu, "daySubMenu");
+            this.daySubMenu.Click += new System.EventHandler(this.DayToolStripMenuItem_Click);
+            // 
+            // nightSubMenu
+            // 
+            this.nightSubMenu.Name = "nightSubMenu";
+            resources.ApplyResources(this.nightSubMenu, "nightSubMenu");
+            this.nightSubMenu.Click += new System.EventHandler(this.NightToolStripMenuItem_Click);
+            // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1287, 699);
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btnDeleteUserFigure);
-            this.Controls.Add(this.btnCreateShape);
             this.Controls.Add(this.gbUserShapes);
+            this.Controls.Add(this.btnCreateShape);
+            this.Controls.Add(this.btnSirialize);
             this.Controls.Add(this.gbShapes);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDesirialized);
-            this.Controls.Add(this.btnSirialize);
             this.Controls.Add(this.pnlDrawingArea);
+            this.Controls.Add(this.menu);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
+            this.MainMenuStrip = this.menu;
             this.Name = "FrmMain";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Shapes";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Resize += new System.EventHandler(this.FrmMain_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).EndInit();
             this.gbShapes.ResumeLayout(false);
             this.gbUserShapes.ResumeLayout(false);
+            this.menu.ResumeLayout(false);
+            this.menu.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -189,6 +220,14 @@
         private System.Windows.Forms.Panel pnlUserShapes;
         private System.Windows.Forms.Button btnCreateShape;
         private System.Windows.Forms.Button btnDeleteUserFigure;
+        private System.Windows.Forms.MenuStrip menu;
+        private System.Windows.Forms.ToolStripMenuItem viewMenu;
+        private System.Windows.Forms.ToolStripMenuItem languageSubMenu;
+        private System.Windows.Forms.ToolStripMenuItem russianSubMenu;
+        private System.Windows.Forms.ToolStripMenuItem englishSubMenu;
+        private System.Windows.Forms.ToolStripMenuItem themeSubMenu;
+        private System.Windows.Forms.ToolStripMenuItem daySubMenu;
+        private System.Windows.Forms.ToolStripMenuItem nightSubMenu;
     }
 }
 

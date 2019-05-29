@@ -10,7 +10,6 @@ namespace draw_shapes
         public List<IShape> Shapes = new List<IShape>();
         public Point Point1 { get; set; }
         public Point Point2 { get; set; }
-
         public UserShape(List<IShape> shapes, Point p1, Point p2)
         {
             Shapes = shapes;

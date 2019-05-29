@@ -1,18 +1,35 @@
-﻿using Newtonsoft.Json;
-using PluginInterface;
+﻿using PluginInterface;
 using Plugins;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Threading;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace draw_shapes
 {
     public partial class FrmMain : Form
     {
+
+        private string Theme { get; set; }
+
+        private readonly string English = "en-US";
+
+        private readonly string Russian = "ru";
+
+        private const string DayTheme = "Day";
+
+        private const string NightTheme = "Night";
+        private const string ReloadMessage = "Изменения окончательно вступят в силу после перезагрузки.\nПерезапустить сейчас?";
+
+        private string Language { get; set; }
+
         private bool IsSelecting = false;
 
         private readonly string PluginPath = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
@@ -35,55 +52,136 @@ namespace draw_shapes
 
         public FrmMain()
         {
+            LoadLanguageFromConfig();
             InitializeComponent();
+            LoadThemeFromConfig();
             UpdateBufferPicture();
             ShapePluginsUpload();
             InitializaStandartFidures();
             ButtonsInitialize();
-            UploadUserShapes();
             ButtonsUserShapes();
         }
 
-        public void SaveUserShapes()
+        private void ReloadApplication()
         {
-            string PathToJson = "user_figures.json";
-            JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-
-            string output = JsonConvert.SerializeObject(UserShapeCreators, jsonSerializerSettings);
-
-            using (StreamWriter sr = new StreamWriter(PathToJson))
+            if (MessageBox.Show(ReloadMessage, "Question", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                sr.Write(output);
+                Application.Restart();
             }
         }
 
-        public void UploadUserShapes()
+        public void ChangeConfig()
         {
-            string ErrorMsg = "Can't decode JSON file.\nIt may be damaged.\n";
-
-            string ErrorCaption = "Error";
-
-            string PathToJson = "user_figures.json";
-            using (StreamReader sr = new StreamReader(PathToJson))
+            var doc = new XmlDocument();
+            try
             {
-                JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings
+                doc.Load("сonfig.xml");
+            }
+            catch
+            {
+                XmlTextWriter textWritter = new XmlTextWriter("config.xml", Encoding.UTF8);
+                textWritter.WriteStartDocument();
+                textWritter.WriteStartElement("head");
+                textWritter.WriteEndElement();
+                textWritter.Close();
+                doc.Load("config.xml");
+            }
+            XmlNode theme = doc.CreateElement("Theme");
+            XmlNode AppLang = doc.CreateElement("Language");
+            doc.DocumentElement.AppendChild(AppLang);
+            doc.DocumentElement.AppendChild(theme);
+            AppLang.InnerText = Language;
+            theme.InnerText = Theme;
+            doc.Save("config.xml");
+        }
+
+        private void LoadThemeFromConfig()
+        {
+            var doc = new XmlDocument();
+            try
+            {
+                doc.Load("config.xml");
+                XmlElement elem = doc.DocumentElement["Theme"];
+                Theme = elem.InnerText;
+                doc.Save("config.xml");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                Theme = DayTheme;
+            }
+            SetTheme();
+        }
+
+        private void SetDayTheme()
+        {
+            BackColor = Color.WhiteSmoke;
+            foreach (Control control in Controls)
+            {
+                control.BackColor = Color.WhiteSmoke;
+            }
+            menu.BackColor = Color.LightGray;
+        }
+
+        private void SetNightTheme()
+        {
+            BackColor = Color.SlateGray;
+            foreach (Control control in Controls)
+            {
+                control.BackColor = Color.White;
+            }
+            menu.BackColor = Color.DarkGray;
+        }
+
+        private void SetTheme()
+        {
+            if (Theme.IndexOf(DayTheme) >= 0)
+            {
+                SetDayTheme();
+            }
+            else
+            {
+                if (Theme.IndexOf(NightTheme) >= 0)
                 {
-                    TypeNameHandling = TypeNameHandling.All,
-                };
-                string data = sr.ReadToEnd();
-                try
-                {
-                    UserShapeCreators = (List<UserShapeCreator>)JsonConvert.DeserializeObject(data, jsonSerializerSettings);
-                    if (UserShapeCreators == null)
-                    {
-                        UserShapeCreators = new List<UserShapeCreator>();
-                    }
+                    SetNightTheme();
                 }
-                catch (Exception e)
+                else
                 {
-                    string errorWithText = ErrorMsg + "[" + e.Message + "]";
-                    MessageBox.Show(errorWithText, ErrorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    SetDayTheme();
                 }
+            }
+
+        }
+
+        private void LoadLanguageFromConfig()
+        {
+            var doc = new XmlDocument();
+            try
+            {
+                doc.Load("config.xml");
+                XmlElement elem = doc.DocumentElement["Language"];
+                Language = elem.InnerText;
+                doc.Save("config.xml");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                Language = English;
+            }
+            SetLanguage();
+        }
+
+        private void SetLanguage()
+        {
+            try
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(Language);
+            }
+            catch (CultureNotFoundException e)
+            {
+                MessageBox.Show(e.Message);
+                Language = English;
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(Language);
             }
         }
 
@@ -97,9 +195,9 @@ namespace draw_shapes
                 Text = caption,
                 StartPosition = FormStartPosition.CenterScreen
             };
-            Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
+            Label textLabel = new Label() { Left = 50, Top = 20, Width = 270, Text = text };
             TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 200 };
-            Button confirmation = new Button() { Text = "Ok", Left = 180, Width = 70, Top = 70, DialogResult = DialogResult.OK };
+            Button confirmation = new Button() { Text = "OK", Left = 180, Width = 71, Top = 70, DialogResult = DialogResult.OK };
             confirmation.Click += (sender, e) => { prompt.Close(); };
             prompt.Controls.Add(textBox);
             prompt.Controls.Add(confirmation);
@@ -185,18 +283,27 @@ namespace draw_shapes
             var pluginFiles = Directory.GetFiles(PluginPath, "*.dll");
             foreach (var file in pluginFiles)
             {
-                //загружаем сборку
-                Assembly asm = Assembly.LoadFrom(file);
-                //ищем типы, имплементирующие наш интерфейс IPlugin,
-                //чтобы не захватить лишнего
-                var types = asm.GetTypes().Where(t => t.GetInterfaces().Where(i => i.FullName == typeof(IShapeCreator).FullName).Any());
-
-                //заполняем экземплярами полученных типов коллекцию плагинов
-                foreach (var type in types)
+                try
                 {
-                    var plugin = asm.CreateInstance(type.FullName) as IShapeCreator;
-                    ShapePlugins.Add(plugin);
+                    //загружаем сборку
+                    Assembly asm = Assembly.LoadFrom(file);
+                    //ищем типы, имплементирующие наш интерфейс IPlugin,
+                    //чтобы не захватить лишнего
+                    var types = asm.GetTypes().Where(t => t.GetInterfaces().Where(i => i.FullName == typeof(IShapeCreator).FullName).Any());
+
+                    //заполняем экземплярами полученных типов коллекцию плагинов
+                    foreach (var type in types)
+                    {
+                        var plugin = asm.CreateInstance(type.FullName) as IShapeCreator;
+                        ShapePlugins.Add(plugin);
+                    }
                 }
+                catch
+                {
+                    string errorWithText = Lang.ErrorLoadPlugin + "[" + Path.GetFileName(file) + "]\n";
+                    MessageBox.Show(errorWithText, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
 
@@ -219,9 +326,10 @@ namespace draw_shapes
 
         private void PnlDrawingArea_MouseUp(object sender, MouseEventArgs e)
         {
+
             if (IsSelecting)
             {
-                string shapeName = ShowDialog("Enter the shape name:", "");
+                string shapeName = ShowDialog(Lang.ShapeNameMessage, "");
 
                 if (shapeName != null)
                 {
@@ -334,13 +442,53 @@ namespace draw_shapes
             if (UserShapeCreator != null)
             {
                 UserShapeCreators.Remove(UserShapeCreator);
+                UserShapeCreator = null;
                 ButtonsUserShapes();
             }
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SaveUserShapes();
+            Serializer.DoSerializationUserShapes(UserShapeCreators);
+            ChangeConfig();
+        }
+
+        private void RussianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Language != Russian)
+            {
+                Language = Russian;
+                SetLanguage();
+                ReloadApplication();
+            }
+        }
+
+        private void EnglishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Language != English)
+            {
+                Language = English;
+                SetLanguage();
+                ReloadApplication();
+            }
+        }
+
+        private void DayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Theme != DayTheme)
+            {
+                Theme = DayTheme;
+                SetTheme();
+            }
+        }
+
+        private void NightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Theme != NightTheme)
+            {
+                Theme = NightTheme;
+                SetTheme();
+            }
         }
     }
 }
