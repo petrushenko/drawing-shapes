@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace PluginInterface
 {
-    public interface IShapeCreatorPlugin
+    public interface IShapeCreator
     {
-        IShapePlugin GetShape();
+        string ButtonName { get; }
+        IShapeCreator ButtonTag { get; }
+        IShape GetShape();
     }
 }

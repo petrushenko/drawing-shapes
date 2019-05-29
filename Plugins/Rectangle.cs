@@ -4,11 +4,8 @@ using PluginInterface;
 
 namespace Plugins
 {
-    public class Rectangle : IShapePlugin
+    public class Rectangle : IShape
     {
-        public virtual IShapeCreatorPlugin ButtonTag => new RectangleCreator();
-        public virtual string ButtonName => "Rectangle";
-
         public virtual Point Point1 { get; set ; }
         public virtual Point Point2 { get; set; }
 
@@ -50,6 +47,14 @@ namespace Plugins
             {
                 graph.DrawRectangle(pen, Point1.X, Point1.Y, GetWidth(), GetHeight());
             }
+        }
+
+        public virtual IShape Clone()
+        {
+            Rectangle rectangle = new Rectangle();
+            rectangle.Point1 = Point1;
+            rectangle.Point2 = Point2;
+            return rectangle;
         }
     }
 }

@@ -10,10 +10,13 @@ namespace Plugins
 {
     public class Circle : Ellipse
     {
-
-        public override string ButtonName => "Circle";
-
-        public override IShapeCreatorPlugin ButtonTag => new CircleCreator();
+        public override IShape Clone()
+        {
+            Circle circle = new Circle();
+            circle.Point1 = Point1;
+            circle.Point2 = Point2;
+            return circle;
+        }
 
         public override void Draw(Graphics graphics)
         {

@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
+using PluginInterface;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using PluginInterface;
 
 namespace draw_shapes
 {
@@ -13,35 +13,63 @@ namespace draw_shapes
 
         private const string ErrorCaption = "Error";
 
-        private const string PathToJson = "figures.json";
+        private const string PathToJsonShapes = "shapes.json";
 
-        //public static void DoDeserialization(ref List<Shape> list)
-        //{
-        //    using (StreamReader sr = new StreamReader(PathToJson))
-        //    {
-        //        JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-        //        string data = sr.ReadToEnd();
-        //        try
-        //        {
-        //            list = JsonConvert.DeserializeObject(data, jsonSerializerSettings) as List<Shape>;
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            string errorWithText = ErrorMsg + "[" + e.Message + "]";
-        //            MessageBox.Show(errorWithText, ErrorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-        //    }
-        //}
+        private const string PathToJsonUserShapes = "user_shapes.json";
 
-        public static void DoDeserialization(ref List<IShapePlugin> list)
+        public static void DoDeserialization(ref List<IShape> list)
         {
-            using (StreamReader sr = new StreamReader(PathToJson))
+            if (!File.Exists(PathToJsonShapes))
+            {
+                File.Create(PathToJsonShapes).Close();
+            }
+
+            using (StreamReader sr = new StreamReader(PathToJsonShapes))
             {
                 JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
                 string data = sr.ReadToEnd();
                 try
                 {
-                    list = JsonConvert.DeserializeObject(data, jsonSerializerSettings) as List<IShapePlugin>;
+                    list = JsonConvert.DeserializeObject(data, jsonSerializerSettings) as List<IShape>;
+                    if (list == null)
+                    {
+                        list = new List<IShape>();
+                    }
+                }
+                catch (Exception e)
+                {
+                    string errorWithText = ErrorMsg + "[" + e.Message + "]";
+                    MessageBox.Show(errorWithText, ErrorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public static void DoDeserializationUserShapes(ref List<UserShapeCreator> list)
+        {
+            if (list == null)
+            {
+                throw new ArgumentNullException(nameof(list));
+            }
+
+            if (!File.Exists(PathToJsonUserShapes))
+            {
+                File.Create(PathToJsonUserShapes).Close();
+            }
+
+            using (StreamReader sr = new StreamReader(PathToJsonUserShapes))
+            {
+                JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All,
+                };
+                string data = sr.ReadToEnd();
+                try
+                {
+                    list = (List<UserShapeCreator>)JsonConvert.DeserializeObject(data, jsonSerializerSettings);
+                    if (list == null)
+                    {
+                        list = new List<UserShapeCreator>();
+                    }
                 }
                 catch (Exception e)
                 {
