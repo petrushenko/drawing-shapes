@@ -2,9 +2,11 @@
 
 namespace Plugins
 {
-    public class EllipseCreator : IShapeCreatorPlugin
+    public class EllipseCreator : IShapeCreator
     {
-        public IShapePlugin GetShape()
+        public string ButtonName => "Ellipse";
+        public IShapeCreator ButtonTag => new EllipseCreator();
+        public IShape GetShape()
         {
             return new Ellipse();
         }

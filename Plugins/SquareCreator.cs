@@ -2,9 +2,13 @@
 
 namespace Plugins
 {
-    internal class SquareCreator : IShapeCreatorPlugin
+    internal class SquareCreator : IShapeCreator
     {
-        public IShapePlugin GetShape()
+
+        public IShapeCreator ButtonTag => new SquareCreator();
+
+        public string ButtonName => "Square";
+        public IShape GetShape()
         {
             return new Square();
         }
