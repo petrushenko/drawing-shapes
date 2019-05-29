@@ -21,7 +21,7 @@ namespace draw_shapes
         {
             if (!File.Exists(PathToJsonShapes))
             {
-                File.Create(PathToJsonShapes);
+                File.Create(PathToJsonShapes).Close();
             }
 
             using (StreamReader sr = new StreamReader(PathToJsonShapes))
@@ -53,7 +53,7 @@ namespace draw_shapes
 
             if (!File.Exists(PathToJsonUserShapes))
             {
-                File.Create(PathToJsonUserShapes);
+                File.Create(PathToJsonUserShapes).Close();
             }
 
             using (StreamReader sr = new StreamReader(PathToJsonUserShapes))
