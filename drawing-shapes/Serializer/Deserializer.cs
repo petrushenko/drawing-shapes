@@ -44,8 +44,12 @@ namespace draw_shapes
             }
         }
 
-        public static void DoDeserializationUserShapes(List<UserShapeCreator> list)
+        public static void DoDeserializationUserShapes(ref List<UserShapeCreator> list)
         {
+            if (list == null)
+            {
+                throw new ArgumentNullException(nameof(list));
+            }
 
             if (!File.Exists(PathToJsonUserShapes))
             {

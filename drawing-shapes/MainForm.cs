@@ -27,6 +27,8 @@ namespace draw_shapes
 
         private const string NightTheme = "Night";
         private const string ReloadMessage = "Изменения окончательно вступят в силу после перезагрузки.\nПерезапустить сейчас?";
+        private const string ReloadCaption = "Reload";
+        private const string ConfigFile = "config.xml";
 
         private string Language { get; set; }
 
@@ -59,12 +61,13 @@ namespace draw_shapes
             ShapePluginsUpload();
             InitializaStandartFidures();
             ButtonsInitialize();
+            Deserializer.DoDeserializationUserShapes(ref UserShapeCreators);
             ButtonsUserShapes();
         }
 
         private void ReloadApplication()
         {
-            if (MessageBox.Show(ReloadMessage, "Question", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show(ReloadMessage, ReloadCaption, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Application.Restart();
             }
@@ -75,16 +78,16 @@ namespace draw_shapes
             var doc = new XmlDocument();
             try
             {
-                doc.Load("сonfig.xml");
+                doc.Load(ConfigFile);
             }
             catch
             {
-                XmlTextWriter textWritter = new XmlTextWriter("config.xml", Encoding.UTF8);
+                XmlTextWriter textWritter = new XmlTextWriter(ConfigFile, Encoding.UTF8);
                 textWritter.WriteStartDocument();
                 textWritter.WriteStartElement("head");
                 textWritter.WriteEndElement();
                 textWritter.Close();
-                doc.Load("config.xml");
+                doc.Load(ConfigFile);
             }
             XmlNode theme = doc.CreateElement("Theme");
             XmlNode AppLang = doc.CreateElement("Language");
@@ -92,7 +95,7 @@ namespace draw_shapes
             doc.DocumentElement.AppendChild(theme);
             AppLang.InnerText = Language;
             theme.InnerText = Theme;
-            doc.Save("config.xml");
+            doc.Save(ConfigFile);
         }
 
         private void LoadThemeFromConfig()
@@ -100,10 +103,10 @@ namespace draw_shapes
             var doc = new XmlDocument();
             try
             {
-                doc.Load("config.xml");
+                doc.Load(ConfigFile);
                 XmlElement elem = doc.DocumentElement["Theme"];
                 Theme = elem.InnerText;
-                doc.Save("config.xml");
+                doc.Save(ConfigFile);
             }
             catch (Exception e)
             {
@@ -158,10 +161,10 @@ namespace draw_shapes
             var doc = new XmlDocument();
             try
             {
-                doc.Load("config.xml");
+                doc.Load(ConfigFile);
                 XmlElement elem = doc.DocumentElement["Language"];
                 Language = elem.InnerText;
-                doc.Save("config.xml");
+                doc.Save(ConfigFile);
             }
             catch (Exception e)
             {
