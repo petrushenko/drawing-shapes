@@ -13,9 +13,6 @@ namespace Plugins
             ellipse.Point2 = Point2;
             return ellipse;
         }
-        public override string ButtonName => "Ellipse";
-
-        public override IShapeCreator ButtonTag => new EllipseCreator();
 
         public override void Draw(Graphics graphics)
         {

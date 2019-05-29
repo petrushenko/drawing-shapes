@@ -8,6 +8,8 @@ namespace PluginInterface
 {
     public interface IShapeCreator
     {
+        string ButtonName { get; }
+        IShapeCreator ButtonTag { get; }
         IShape GetShape();
     }
 }

@@ -5,23 +5,15 @@ using System.Drawing;
 
 namespace draw_shapes
 {
-    class UserShape : ICloneable
+    public class UserShape
     {
         public List<IShape> Shapes = new List<IShape>();
         public Point Point1 { get; set; }
         public Point Point2 { get; set; }
+
         public UserShape(List<IShape> shapes, Point p1, Point p2)
         {
-            foreach (IShape shape in shapes)
-            {
-                if (shape.Point1.X >= p1.X && shape.Point2.X <= p2.X)
-                {
-                    if (shape.Point1.Y >= p1.Y && shape.Point2.Y <= p2.Y)
-                    {
-                        Shapes.Add(shape.Clone());
-                    }
-                }
-            }
+            Shapes = shapes;
             Point1 = p1;
             Point2 = p2;
         }
@@ -41,19 +33,17 @@ namespace draw_shapes
             }
         }
         
-        public void Draw(List<IShape> shapes, Point p1, Point p2)
+        public void CopyToListShapes(List<IShape> shapesList, Point p1, Point p2)
         {
+            if (shapesList == null)
+            {
+                return;
+            }
             RebuildShapesCoords(p1, p2);
             foreach (IShape shape in Shapes)
             {
-                IShape shapeClone = shape.Clone();
-                shapes.Add(shapeClone);
+                shapesList.Add(shape);
             }
-        }
-
-        public object Clone()
-        {
-            return new UserShape(Shapes, Point1, Point2);
         }
     }
 }

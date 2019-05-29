@@ -1,4 +1,5 @@
-﻿using PluginInterface;
+﻿using Newtonsoft.Json;
+using PluginInterface;
 using Plugins;
 using System;
 using System.Collections.Generic;
@@ -11,22 +12,25 @@ using System.Windows.Forms;
 namespace draw_shapes
 {
     public partial class FrmMain : Form
-    { 
-
-        UserShape us;
-
+    {
         public bool flag = false;
 
-        bool flag2 = false;
-
+        private bool IsSelecting = false;
 
         private readonly string PluginPath = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
 
-        public List<IShape> ShapePlugins = new List<IShape>();
+        private List<IShapeCreator> ShapePlugins = new List<IShapeCreator>();
 
-        public IShapeCreator ShapeCreator { get; set; }
+        private List<IShape> Shapes = new List<IShape>();
+
+        private List<UserShapeCreator> UserShapeCreators = new List<UserShapeCreator>();
+        private UserShapeCreator UserShapeCreator { get; set; } //!!!
+
+        private IShapeCreator ShapeCreator { get; set; }
 
         private IShape TempShape { get; set; }
+
+        private List<IShape> TempShapes = new List<IShape>();
 
         private Point FirstPoint { get; set; }
 
@@ -39,6 +43,73 @@ namespace draw_shapes
             ShapePluginsUpload();
             InitializaStandartFidures();
             ButtonsInitialize();
+            UploadUserShapes();
+            ButtonsUserShapes();
+        }
+
+        public void SaveUserShapes()
+        {
+            string PathToJson = "user_figures.json";
+            JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+
+            string output = JsonConvert.SerializeObject(UserShapeCreators, jsonSerializerSettings);
+
+            using (StreamWriter sr = new StreamWriter(PathToJson))
+            {
+                sr.Write(output);
+            }
+        }
+
+        public void UploadUserShapes()
+        {
+            string ErrorMsg = "Can't decode JSON file.\nIt may be damaged.\n";
+
+            string ErrorCaption = "Error";
+
+            string PathToJson = "user_figures.json";
+            using (StreamReader sr = new StreamReader(PathToJson))
+            {
+                JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All,
+                };
+                string data = sr.ReadToEnd();
+                try
+                {
+                    UserShapeCreators = (List<UserShapeCreator>)JsonConvert.DeserializeObject(data, jsonSerializerSettings);
+                    if (UserShapeCreators == null)
+                    {
+                        UserShapeCreators = new List<UserShapeCreator>();
+                    }
+                }
+                catch (Exception e)
+                {
+                    string errorWithText = ErrorMsg + "[" + e.Message + "]";
+                    MessageBox.Show(errorWithText, ErrorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public static string ShowDialog(string text, string caption)
+        {
+            Form prompt = new Form()
+            {
+                Width = 300,
+                Height = 150,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = caption,
+                StartPosition = FormStartPosition.CenterScreen
+            };
+            Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
+            TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 200 };
+            Button confirmation = new Button() { Text = "Ok", Left = 180, Width = 70, Top = 70, DialogResult = DialogResult.OK };
+            confirmation.Click += (sender, e) => { prompt.Close(); };
+            prompt.Controls.Add(textBox);
+            prompt.Controls.Add(confirmation);
+            prompt.Controls.Add(textLabel);
+            prompt.AcceptButton = confirmation;
+
+            return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : null;
         }
 
         private void UpdateBufferPicture()
@@ -46,16 +117,29 @@ namespace draw_shapes
             BufferedPicture = new Bitmap(pnlDrawingArea.Width, pnlDrawingArea.Height);
         }
 
+        private void CreateUserShape(string figureName, Point location, List<IShape> shapes, Point p1, Point p2)
+        {
+            UserShapeCreators.Add(new UserShapeCreator(shapes, p1, p2, figureName));
+        }
+
+        private void ButtonUserShape_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            UserShapeCreator = button.Tag as UserShapeCreator;
+            ShapeCreator = null;
+        }
+
         private void InitializaStandartFidures()
         {
-            ShapePlugins.Add(new Line());
+            ShapePlugins.Add(new LineCreator());
         }
 
         private void ButtonsInitialize()
         {
+            pnlShapes.Controls.Clear();
             int X = 10;
             int Y = 10;
-            foreach (IShape shapePlugin in ShapePlugins)
+            foreach (IShapeCreator shapePlugin in ShapePlugins)
             {
                 Button button = new Button
                 {
@@ -69,18 +153,38 @@ namespace draw_shapes
                 Y += 25;
                 pnlShapes.Controls.Add(button);
             }
-            ShapePlugins.Clear();
+        }
+
+        private void ButtonsUserShapes()
+        {
+            pnlUserShapes.Controls.Clear();
+            int X = 10;
+            int Y = 10;
+            foreach (UserShapeCreator userShapeCreator in UserShapeCreators)
+            {
+                Button button = new Button
+                {
+                    Name = userShapeCreator.Name,
+                    Text = userShapeCreator.Name,
+                    Tag = userShapeCreator,
+                    Location = new Point(X, Y),
+                };
+                button.Click += ButtonUserShape_Click;
+                pnlUserShapes.Controls.Add(button);
+                Y += 25;
+            }
         }
 
         private void ShapeButton_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
             ShapeCreator = button.Tag as IShapeCreator;
+            UserShapeCreator = null;
         }
 
         private void ShapePluginsUpload()
         {
-            ShapePlugins.Clear();
+            Shapes.Clear();
 
             DirectoryInfo pluginDirectory = new DirectoryInfo(PluginPath);
             if (!pluginDirectory.Exists)
@@ -93,12 +197,12 @@ namespace draw_shapes
                 Assembly asm = Assembly.LoadFrom(file);
                 //ищем типы, имплементирующие наш интерфейс IPlugin,
                 //чтобы не захватить лишнего
-                var types = asm.GetTypes().Where(t => t.GetInterfaces().Where(i => i.FullName == typeof(IShape).FullName).Any());
+                var types = asm.GetTypes().Where(t => t.GetInterfaces().Where(i => i.FullName == typeof(IShapeCreator).FullName).Any());
 
                 //заполняем экземплярами полученных типов коллекцию плагинов
                 foreach (var type in types)
                 {
-                    var plugin = asm.CreateInstance(type.FullName) as IShape;
+                    var plugin = asm.CreateInstance(type.FullName) as IShapeCreator;
                     ShapePlugins.Add(plugin);
                 }
             }
@@ -119,38 +223,38 @@ namespace draw_shapes
         private void PnlDrawingArea_MouseDown(object sender, MouseEventArgs e)
         {
             FirstPoint = new Point(e.X, e.Y);
-            if (ShapeCreator != null)
-            {
-                
-                TempShape = ShapeCreator.GetShape();
-            }
         }
 
         private void PnlDrawingArea_MouseUp(object sender, MouseEventArgs e)
         {
-            if (flag)
+            if (IsSelecting)
             {
-                us = new UserShape(ShapePlugins, FirstPoint, new Point(e.X, e.Y));
-                flag = false;
+                string shapeName = ShowDialog("Enter the shape name:", "");
+
+                if (shapeName != null)
+                {
+                    //CreateUserShape(shapeName, new Point(10, LastY), Shapes, FirstPoint, new Point(e.X, e.Y));
+                    //LastY += 25;
+                    UserShapeCreators.Add(new UserShapeCreator(Shapes, FirstPoint, new Point(e.X, e.Y), shapeName));
+                    ButtonsUserShapes();
+                }
+                IsSelecting = false;
+            }
+            if (UserShapeCreator != null)
+            {
+                UserShape userShape = UserShapeCreator.GetUserShape();
+                userShape.CopyToListShapes(Shapes, FirstPoint, new Point(e.X, e.Y));
+                DoDrawing(Shapes);
             }
 
-            if (flag2)
-            {
-                //uf.RebuildCoords(FirstPoint, new Point(e.X, e.Y));
-                UserShape newUS = us.Clone() as UserShape;
-                newUS.Draw(ShapePlugins, FirstPoint, new Point(e.X, e.Y));
-                flag2 = false;
-                ShapeCreator = new LineCreator();
-            }
             if (ShapeCreator != null)
             {
                 IShape currShape = ShapeCreator.GetShape();
                 currShape.Point1 = FirstPoint;
                 currShape.Point2 = new Point(e.X, e.Y);
-                ShapePlugins.Add(currShape);
+                Shapes.Add(currShape);
                 TempShape = null;
-                DoDrawing(ShapePlugins);
-                //DoDrawing(uf.Shapes);
+                DoDrawing(Shapes);
             }
         }
 
@@ -164,50 +268,78 @@ namespace draw_shapes
 
         private void BtnClear_Click(object sender, EventArgs e)
         {
-            ShapePlugins.Clear();
-            DoDrawing(ShapePlugins);
+            Shapes.Clear();
+            DoDrawing(Shapes);
         }
 
         private void PnlDrawingArea_MouseMove(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Left && UserShapeCreator != null)
+            {
+                UserShape userShape = UserShapeCreator.GetUserShape();
+                userShape.CopyToListShapes(TempShapes, FirstPoint, new Point(e.X, e.Y));
+                foreach (IShape shape in TempShapes)
+                {
+                    Shapes.Add(shape);
+                }
+                DoDrawing(Shapes);
+                foreach (IShape shape in TempShapes)
+                {
+                    Shapes.Remove(shape);
+                }
+                TempShapes.Clear();
+            }
+
             if (e.Button == MouseButtons.Left && ShapeCreator != null)
             {
+                TempShape = ShapeCreator.GetShape();
                 TempShape.Point1 = FirstPoint;
                 TempShape.Point2 = new Point(e.X, e.Y);
-                ShapePlugins.Add(TempShape);
-                DoDrawing(ShapePlugins);
-                ShapePlugins.Remove(TempShape);
+                Shapes.Add(TempShape);
+                DoDrawing(Shapes);
+                Shapes.Remove(TempShape);
             }
         }
 
         private void BtnSerealize_Click(object sender, EventArgs e)
         {
-            Serializer.DoSerialization(ShapePlugins);
+            Serializer.DoSerialization(Shapes);
         }
 
         private void BtnDesirialized_Click(object sender, EventArgs e)
         {
-            Deserializer.DoDeserialization(ref ShapePlugins);
-            DoDrawing(ShapePlugins);
+            Deserializer.DoDeserialization(ref Shapes);
+            DoDrawing(Shapes);
         }
 
         private void FrmMain_Resize(object sender, EventArgs e)
         {
-            UpdateBufferPicture();
-            DoDrawing(ShapePlugins);
+            if (WindowState != FormWindowState.Minimized)
+            {
+                UpdateBufferPicture();
+                DoDrawing(Shapes);
+            }
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void BtnCreateShape_Click(object sender, EventArgs e)
         {
-            flag2 = true;
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            flag = true;
-
+            IsSelecting = true;
             ShapeCreator = null;
-            //DoDrawing(uf.Shapes);
+            UserShapeCreator = null;
+        }
+
+        private void BtnDeleteUserFigure_Click(object sender, EventArgs e)
+        {
+            if (UserShapeCreator != null)
+            {
+                UserShapeCreators.Remove(UserShapeCreator);
+                ButtonsUserShapes();
+            }
+        }
+
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveUserShapes();
         }
     }
 }

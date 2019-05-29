@@ -17,9 +17,6 @@ namespace Plugins
             circle.Point2 = Point2;
             return circle;
         }
-        public override string ButtonName => "Circle";
-
-        public override IShapeCreator ButtonTag => new CircleCreator();
 
         public override void Draw(Graphics graphics)
         {

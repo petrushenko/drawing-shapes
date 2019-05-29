@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoordsMaster.cs" />
     <Compile Include="Serializer\Deserializer.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -66,8 +67,9 @@
     <Compile Include="Serializer\Serializer.cs" />
     <Compile Include="StandartFigures\Line.cs" />
     <Compile Include="StandartFigures\LineCreator.cs" />
-    <Compile Include="UserFigures\UserFigures.cs" />
     <Compile Include="UserShape.cs" />
+    <Compile Include="UserShapeButton.cs" />
+    <Compile Include="UserShapeCreator.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -15,9 +15,6 @@ namespace Plugins
         }
 
         public Point[] Points = new Point[3];
-        public string ButtonName => "Triangle";
-
-        public IShapeCreator ButtonTag => new TriangleCreator();
 
         public Point Point1 { get; set; }
         public Point Point2 { get; set; }

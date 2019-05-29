@@ -12,9 +12,6 @@ namespace Plugins
             square.Point2 = Point2;
             return square;
         }
-        public override IShapeCreator ButtonTag => new SquareCreator();
-
-        public override string ButtonName => "Square";
 
         public override void Draw(Graphics graph)
         {

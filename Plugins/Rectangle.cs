@@ -6,9 +6,6 @@ namespace Plugins
 {
     public class Rectangle : IShape
     {
-        public virtual IShapeCreator ButtonTag => new RectangleCreator();
-        public virtual string ButtonName => "Rectangle";
-
         public virtual Point Point1 { get; set ; }
         public virtual Point Point2 { get; set; }
 
