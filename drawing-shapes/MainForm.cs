@@ -26,9 +26,8 @@ namespace draw_shapes
         private const string DayTheme = "Day";
 
         private const string NightTheme = "Night";
-        
+        private const string ReloadMessage = "Изменения окончательно вступят в силу после перезагрузки.\nПерезапустить сейчас?";
         private const string ReloadCaption = "Reload";
-
         private const string ConfigFile = "config.xml";
 
         private string Language { get; set; }
@@ -68,7 +67,7 @@ namespace draw_shapes
 
         private void ReloadApplication()
         {
-            if (MessageBox.Show(Lang.ReloadMessage, ReloadCaption, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show(ReloadMessage, ReloadCaption, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Application.Restart();
             }
@@ -141,8 +140,9 @@ namespace draw_shapes
                 Theme = elem.InnerText;
                 doc.Save(ConfigFile);
             }
-            catch
+            catch (Exception e)
             {
+                //MessageBox.Show(e.Message);
                 Theme = DayTheme;
             }
             SetTheme();
@@ -163,7 +163,7 @@ namespace draw_shapes
             BackColor = Color.SlateGray;
             foreach (Control control in Controls)
             {
-                control.BackColor = Color.LightGray;
+                control.BackColor = Color.White;
             }
             menu.BackColor = Color.DarkGray;
         }
@@ -199,8 +199,9 @@ namespace draw_shapes
                 Language = elem.InnerText;
                 doc.Save(ConfigFile);
             }
-            catch
+            catch (Exception e)
             {
+                //MessageBox.Show(e.Message);
                 Language = English;
             }
             SetLanguage();
@@ -208,7 +209,7 @@ namespace draw_shapes
 
         private void SetLanguage()
         {
-            if (Language != English && Language != Russian)
+            if (Language != English || Language != Russian)
             {
                 Language = English;
             }
