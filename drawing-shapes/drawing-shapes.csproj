@@ -67,6 +67,8 @@
     <Compile Include="Serializer\Serializer.cs" />
     <Compile Include="StandartFigures\Line.cs" />
     <Compile Include="StandartFigures\LineCreator.cs" />
+    <Compile Include="StandartFigures\RedRectangle.cs" />
+    <Compile Include="StandartFigures\RedTriangleCreator.cs" />
     <Compile Include="UserShape.cs" />
     <Compile Include="UserShapeButton.cs" />
     <Compile Include="UserShapeCreator.cs" />

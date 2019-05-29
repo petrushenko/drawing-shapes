@@ -1,9 +1,6 @@
-﻿using Newtonsoft.Json;
-using PluginInterface;
+﻿using PluginInterface;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Runtime.Serialization;
-using System.Windows.Forms;
 
 namespace draw_shapes
 {
@@ -18,19 +15,12 @@ namespace draw_shapes
         {
             foreach (IShape shape in shapes)
             {
-                //сделать проверку на валидные координаты
-                Point[] sortPoints = CoordsMaster.SwapCoords(new[] { p1, p2 });
-                p1 = sortPoints[0];
-                p2 = sortPoints[1];
-                //if (shape.Point1.X >= p1.X && shape.Point2.X <= p2.X)
-                //{
-                //    if (shape.Point1.Y >= p1.Y && shape.Point2.Y <= p2.Y)
-                //    {
-                        Shapes.Add(shape.Clone());
-                //    }
-                //}
+                Shapes.Add(shape.Clone());
             }
             Name = name;
+            Point[] sortPoints = CoordsMaster.SwapCoords(new[] { p1, p2 });
+            p1 = sortPoints[0];
+            p2 = sortPoints[1];
             Point1 = p1;
             Point2 = p2;
         }

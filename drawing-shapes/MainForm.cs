@@ -13,8 +13,6 @@ namespace draw_shapes
 {
     public partial class FrmMain : Form
     {
-        public bool flag = false;
-
         private bool IsSelecting = false;
 
         private readonly string PluginPath = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
@@ -24,8 +22,7 @@ namespace draw_shapes
         private List<IShape> Shapes = new List<IShape>();
 
         private List<UserShapeCreator> UserShapeCreators = new List<UserShapeCreator>();
-        private UserShapeCreator UserShapeCreator { get; set; } //!!!
-
+        private UserShapeCreator UserShapeCreator { get; set; }
         private IShapeCreator ShapeCreator { get; set; }
 
         private IShape TempShape { get; set; }
@@ -115,11 +112,6 @@ namespace draw_shapes
         private void UpdateBufferPicture()
         {
             BufferedPicture = new Bitmap(pnlDrawingArea.Width, pnlDrawingArea.Height);
-        }
-
-        private void CreateUserShape(string figureName, Point location, List<IShape> shapes, Point p1, Point p2)
-        {
-            UserShapeCreators.Add(new UserShapeCreator(shapes, p1, p2, figureName));
         }
 
         private void ButtonUserShape_Click(object sender, EventArgs e)
@@ -233,12 +225,11 @@ namespace draw_shapes
 
                 if (shapeName != null)
                 {
-                    //CreateUserShape(shapeName, new Point(10, LastY), Shapes, FirstPoint, new Point(e.X, e.Y));
-                    //LastY += 25;
                     UserShapeCreators.Add(new UserShapeCreator(Shapes, FirstPoint, new Point(e.X, e.Y), shapeName));
                     ButtonsUserShapes();
                 }
                 IsSelecting = false;
+                DoDrawing(Shapes);
             }
             if (UserShapeCreator != null)
             {
@@ -288,6 +279,16 @@ namespace draw_shapes
                     Shapes.Remove(shape);
                 }
                 TempShapes.Clear();
+            }
+
+            if (e.Button == MouseButtons.Left && IsSelecting)
+            {
+                RedRectangle redRectangle = new RedRectangle();
+                redRectangle.Point1 = FirstPoint;
+                redRectangle.Point2 = new Point(e.X, e.Y);
+                Shapes.Add(redRectangle);
+                DoDrawing(Shapes);
+                Shapes.Remove(redRectangle);
             }
 
             if (e.Button == MouseButtons.Left && ShapeCreator != null)
