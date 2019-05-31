@@ -139,29 +139,47 @@
     <value>Удалить фигуру</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="viewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 29</value>
+  <data name="languageSubMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
   </data>
-  <data name="viewToolStripMenuItem.Text" xml:space="preserve">
-    <value>Вид</value>
-  </data>
-  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+  <data name="languageSubMenu.Text" xml:space="preserve">
     <value>Язык</value>
   </data>
-  <data name="russianToolStripMenuItem.Text" xml:space="preserve">
-    <value>Русский</value>
+  <data name="daySubMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
   </data>
-  <data name="englishToolStripMenuItem.Text" xml:space="preserve">
-    <value>Английский</value>
+  <data name="daySubMenu.Text" xml:space="preserve">
+    <value>День</value>
   </data>
-  <data name="themeToolStripMenuItem.Text" xml:space="preserve">
+  <data name="nightSubMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="nightSubMenu.Text" xml:space="preserve">
+    <value>Ночь</value>
+  </data>
+  <data name="themeSubMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="themeSubMenu.Text" xml:space="preserve">
     <value>Тема</value>
   </data>
-  <data name="dayToolStripMenuItem.Text" xml:space="preserve">
-    <value>Дневная</value>
+  <data name="viewMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 29</value>
   </data>
-  <data name="nightToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ночная</value>
+  <data name="viewMenu.Text" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="russianSubMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="russianSubMenu.Text" xml:space="preserve">
+    <value>Русский</value>
+  </data>
+  <data name="englishSubMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="englishSubMenu.Text" xml:space="preserve">
+    <value>Английский</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

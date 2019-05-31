@@ -124,58 +124,58 @@
             // 
             // menu
             // 
+            resources.ApplyResources(this.menu, "menu");
             this.menu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewMenu});
-            resources.ApplyResources(this.menu, "menu");
             this.menu.Name = "menu";
             // 
             // viewMenu
             // 
+            resources.ApplyResources(this.viewMenu, "viewMenu");
             this.viewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.languageSubMenu,
             this.themeSubMenu});
             this.viewMenu.Name = "viewMenu";
-            resources.ApplyResources(this.viewMenu, "viewMenu");
             // 
             // languageSubMenu
             // 
+            resources.ApplyResources(this.languageSubMenu, "languageSubMenu");
             this.languageSubMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.russianSubMenu,
             this.englishSubMenu});
             this.languageSubMenu.Name = "languageSubMenu";
-            resources.ApplyResources(this.languageSubMenu, "languageSubMenu");
             // 
             // russianSubMenu
             // 
-            this.russianSubMenu.Name = "russianSubMenu";
             resources.ApplyResources(this.russianSubMenu, "russianSubMenu");
+            this.russianSubMenu.Name = "russianSubMenu";
             this.russianSubMenu.Click += new System.EventHandler(this.RussianToolStripMenuItem_Click);
             // 
             // englishSubMenu
             // 
-            this.englishSubMenu.Name = "englishSubMenu";
             resources.ApplyResources(this.englishSubMenu, "englishSubMenu");
+            this.englishSubMenu.Name = "englishSubMenu";
             this.englishSubMenu.Click += new System.EventHandler(this.EnglishToolStripMenuItem_Click);
             // 
             // themeSubMenu
             // 
+            resources.ApplyResources(this.themeSubMenu, "themeSubMenu");
             this.themeSubMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.daySubMenu,
             this.nightSubMenu});
             this.themeSubMenu.Name = "themeSubMenu";
-            resources.ApplyResources(this.themeSubMenu, "themeSubMenu");
             // 
             // daySubMenu
             // 
-            this.daySubMenu.Name = "daySubMenu";
             resources.ApplyResources(this.daySubMenu, "daySubMenu");
+            this.daySubMenu.Name = "daySubMenu";
             this.daySubMenu.Click += new System.EventHandler(this.DayToolStripMenuItem_Click);
             // 
             // nightSubMenu
             // 
-            this.nightSubMenu.Name = "nightSubMenu";
             resources.ApplyResources(this.nightSubMenu, "nightSubMenu");
+            this.nightSubMenu.Name = "nightSubMenu";
             this.nightSubMenu.Click += new System.EventHandler(this.NightToolStripMenuItem_Click);
             // 
             // FrmMain
