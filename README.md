@@ -2,6 +2,10 @@
 
 Object-oriented programming labs
 
+##Screenshot
+
+![program interface](screenshots/001.png)
+
 ## Tasks
 
 #### 1. "Familiarization with OOP concepts: inheritance and type polymorphism (virtual methods)"
