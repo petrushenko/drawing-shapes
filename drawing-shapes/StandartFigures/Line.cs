@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using PluginInterface;
 
-namespace Plugins
+namespace draw_shapes
 {
     public class Line : IShape
     {        

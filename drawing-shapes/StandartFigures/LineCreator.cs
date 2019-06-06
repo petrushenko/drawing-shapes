@@ -1,6 +1,6 @@
 ﻿using PluginInterface;
 
-namespace Plugins
+namespace draw_shapes
 {
     public class LineCreator : IShapeCreator
     {
