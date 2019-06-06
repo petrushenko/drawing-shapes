@@ -2,7 +2,7 @@
 
 Object-oriented programming labs
 
-##Screenshot
+## Screenshot
 
 ![program interface](screenshots/001.png)
 
